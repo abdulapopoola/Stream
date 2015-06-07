@@ -1,11 +1,10 @@
 /* global stream, describe, it, expect, should */
 
-describe('stream()', function () {
+describe('Stream()', function () {
   'use strict';
 
   it('exists', function () {
-    expect(stream).to.be.a('function');
-
+    expect(Stream).to.be.a('function');
   });
 
   it('does something', function () {
