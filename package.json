@@ -1,0 +1,11 @@
+{
+  "name": "stream",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+      "chai": "~1.8.0"
+  },
+  "scripts": {
+    "test": "mocha ./spec/stream.js"
+  }
+}
