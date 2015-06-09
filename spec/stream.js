@@ -4,11 +4,13 @@ describe('Stream()', function () {
   'use strict';
 
   it('exists', function () {
-    expect(Stream).to.be.a('function');
+      expect(Stream).to.be.a('function');
   });
 
-  it('does something', function () {
-    expect(true).to.equal(false);
+  it('can create Stream with no arguments', function () {
+      var stream = new Stream();
+      expect(stream.streamFirst).to.equal(undefined);
+      expect(stream.streamRest).to.be.a('function');
   });
 
   it('does something else', function () {
