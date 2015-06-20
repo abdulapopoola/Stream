@@ -28,6 +28,6 @@
   <script>
   if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
   else { mocha.run(); }
-	</script>
+</script>
 </body>
 </html>
