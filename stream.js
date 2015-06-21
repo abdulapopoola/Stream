@@ -17,6 +17,17 @@ function Stream (first, restGenerator) {
     };
 }
 
-Stream.prototype = {
-    
-};
+/**
+*   Checks if a stream is empty*   
+*
+*   @returns {boolean} Returns `true` if the stream is empty
+*   @example
+*
+*   emptyStream.isEmpty();
+*   // => true
+**/
+function isEmpty() {
+    return this.streamFirst != null;
+}
+
+Stream.prototype.isEmpty = isEmpty;
