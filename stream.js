@@ -13,7 +13,7 @@ function fail(errMessage) {
 function Stream (first, restGenerator) {
     this.streamFirst = first;
     this.streamRest = restGenerator || function () {
-        return new Stream();
+        return new Stream(null, null);
     };
 }
 
@@ -26,8 +26,8 @@ function Stream (first, restGenerator) {
 *   emptyStream.isEmpty();
 *   // => true
 **/
-function isEmpty() {
-    return this.streamFirst != null;
+function isEmpty(stream) {
+    return stream.streamFirst == null;
 }
 
-Stream.prototype.isEmpty = isEmpty;
+Stream.isEmpty = isEmpty;
