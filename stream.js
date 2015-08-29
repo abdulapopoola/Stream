@@ -18,8 +18,9 @@ function Stream (first, restGenerator) {
 }
 
 /**
-*   Checks if a stream is empty*   
+*   Checks if a stream is empty   
 *
+*   @static
 *   @returns {boolean} Returns `true` if the stream is empty
 *   @example
 *
@@ -30,4 +31,44 @@ function isEmpty(stream) {
     return stream.streamFirst == null;
 }
 
+/**
+*   Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
+*
+*   @returns {Array} Returns array of all successfully picked items
+*   @example
+*
+*   integerStream.pick(3);
+*   // => [1,2,3]
+**/
+function pick(n) {
+    if(!n || Stream.isEmpty(this))
+        return [];
+        
+    var items = [];
+    var count = 0;
+    var s = this;
+    
+    while(count < n && !Stream.isEmpty(s)) {
+        count++;
+        items.push(s.streamFirst);
+        s = s.streamRest(); 
+    }
+    
+    return items;
+}
+
+function ones() {
+    return new Stream(1, ones);
+};
+
+function ones() {
+    return new Stream(1, ones);
+};
+
 Stream.isEmpty = isEmpty;
+Stream.prototype.pick = pick;
+
+// Examples
+Stream.ones = ones;
+// ones = Stream.ones()
+// ones.pick(3) -> [1,1,1]
