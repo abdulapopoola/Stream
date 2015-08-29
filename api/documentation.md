@@ -6,7 +6,10 @@
 ## Functions
 <dl>
 <dt><a href="#isEmpty">isEmpty()</a> ⇒ <code>boolean</code></dt>
-<dd><p>Checks if a stream is empty*</p>
+<dd><p>Checks if a stream is empty</p>
+</dd>
+<dt><a href="#pick">pick()</a> ⇒ <code>Array</code></dt>
+<dd><p>Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream</p>
 </dd>
 </dl>
 <a name="Stream"></a>
@@ -25,7 +28,7 @@ Creates the Stream object
 
 <a name="isEmpty"></a>
 ## isEmpty() ⇒ <code>boolean</code>
-Checks if a stream is empty*
+Checks if a stream is empty
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - Returns `true` if the stream is empty  
@@ -33,4 +36,15 @@ Checks if a stream is empty*
 ```js
 emptyStream.isEmpty();
   // => true
+```
+<a name="pick"></a>
+## pick() ⇒ <code>Array</code>
+Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - Returns array of all successfully picked items  
+**Example**  
+```js
+integerStream.pick(3);
+  // => [1,2,3]
 ```
