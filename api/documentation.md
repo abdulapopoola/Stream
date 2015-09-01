@@ -11,6 +11,9 @@
 <dt><a href="#map">map(stream, fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Maps a function to all the elements of a stream</p>
 </dd>
+<dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Returns an infinite stream of ones</p>
+</dd>
 <dt><a href="#pick">pick(n)</a> ⇒ <code>Array</code></dt>
 <dd><p>Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream</p>
 </dd>
@@ -65,6 +68,16 @@ Maps a function to all the elements of a stream
 ```js
 Stream.map(integerStream, function (n) { return n*2; });
   // => true
+```
+<a name="Ones"></a>
+## Ones() ⇒ <code>[Stream](#Stream)</code>
+Returns an infinite stream of ones
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - Value at nth index in stream  
+**Example**  
+```js
+var ones = Stream.Ones();
 ```
 <a name="pick"></a>
 ## pick(n) ⇒ <code>Array</code>

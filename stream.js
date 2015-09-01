@@ -55,6 +55,19 @@ function map(stream, fn) {
 }
 
 /**
+*   Returns an infinite stream of ones   
+*
+*   @static
+*   @returns {Stream} Value at nth index in stream
+*   @example
+*
+*   var ones = Stream.Ones();
+**/
+function Ones() {
+    return new Stream(1, Ones);
+};
+
+/**
 *   Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
 *
 *   @param {Number} n - The number of elements to be picked
@@ -98,17 +111,8 @@ function valueAt(index) {
     return items[items.length - 1];
 }
 
-function Ones() {
-    return new Stream(1, Ones);
-};
-
 Stream.isEmpty = isEmpty;
 Stream.map = map;
+Stream.Ones = Ones;
 Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
-
-// Examples
-Stream.ones = Ones;
-var b = new Stream.ones();
-b.pick(3); // -> [1,1,1]
-b.valueAt(4); //5

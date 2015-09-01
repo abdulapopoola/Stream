@@ -20,5 +20,17 @@ describe('Stream()', function () {
     expect(Stream.isEmpty(stream)).to.equal(false);
   });
 
-  // Add more assertions here
+  it('can pick the first n items of a Stream', function () {
+    var stream = Stream.Ones();
+    expect(stream.streamFirst).to.equal(1);
+    expect(stream.streamRest).to.be.a('function');
+    expect(stream.pick(4)).to.deep.equal([1,1,1,1]);
+  });
+  
+  it('can retrieve the value at an index in a Stream', function () {
+    var stream = Stream.Ones();
+    expect(stream.streamFirst).to.equal(1);
+    expect(stream.streamRest).to.be.a('function');
+    expect(stream.valueAt(4)).to.equal(1);
+  });
 });
