@@ -8,7 +8,7 @@ function fail(errMessage) {
 *   @name Stream
 *   @param {*} first - First element of the stream
 *   @param {Function} restGenerator - function to generate remaining parts of the stream
-*   @returns {Object} Returns the new Stream object instance
+*   @returns {Stream} Returns the new Stream object instance
 **/
 function Stream (first, restGenerator) {
     this.streamFirst = first;
@@ -21,10 +21,11 @@ function Stream (first, restGenerator) {
 *   Checks if a stream is empty   
 *
 *   @static
+*   @param {Stream} stream - stream to check for emptiness
 *   @returns {boolean} Returns `true` if the stream is empty
 *   @example
 *
-*   emptyStream.isEmpty();
+*   Stream.isEmpty(emptyStream);
 *   // => true
 **/
 function isEmpty(stream) {
@@ -32,8 +33,31 @@ function isEmpty(stream) {
 }
 
 /**
+*   Maps a function to all the elements of a stream   
+*
+*   @static
+*   @param {Stream} stream - Stream to map function to
+*   @param {Function} fn - Function to apply to stream elements
+*   @returns {Stream} Returns a new Stream with the input function applied to entries
+*   @example
+*
+*   Stream.map(integerStream, function (n) { return n*2; });
+*   // => true
+**/
+function map(stream, fn) {
+    if(Stream.isEmpty(stream) || fn == null)
+        return this;
+        
+    return new Stream(
+        fn(stream.streamFirst), 
+        Stream.map(stream.streamRest, fn)
+    );
+}
+
+/**
 *   Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
 *
+*   @param {Number} n - The number of elements to be picked
 *   @returns {Array} Returns array of all successfully picked items
 *   @example
 *
@@ -57,18 +81,34 @@ function pick(n) {
     return items;
 }
 
-function ones() {
-    return new Stream(1, ones);
-};
+/**
+*   Picks the element at the nth index in a stream. Returns undefined 
+*   if stream size is less than the index
+*
+*   @param {Number} index - The index of the stream element to be picked
+*   @returns {*} Value at nth index in stream
+*   @example
+*
+*   integerStream.valueAt(3);
+*   // => 3
+**/
+function valueAt(index) {
+    var items = this.pick(index);
+    
+    return items[items.length - 1];
+}
 
-function ones() {
-    return new Stream(1, ones);
+function Ones() {
+    return new Stream(1, Ones);
 };
 
 Stream.isEmpty = isEmpty;
+Stream.map = map;
 Stream.prototype.pick = pick;
+Stream.prototype.valueAt = valueAt;
 
 // Examples
-Stream.ones = ones;
-// ones = Stream.ones()
-// ones.pick(3) -> [1,1,1]
+Stream.ones = Ones;
+var b = new Stream.ones();
+b.pick(3); // -> [1,1,1]
+b.valueAt(4); //5

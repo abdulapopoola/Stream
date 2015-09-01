@@ -5,11 +5,18 @@
 </dl>
 ## Functions
 <dl>
-<dt><a href="#isEmpty">isEmpty()</a> ⇒ <code>boolean</code></dt>
+<dt><a href="#isEmpty">isEmpty(stream)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks if a stream is empty</p>
 </dd>
-<dt><a href="#pick">pick()</a> ⇒ <code>Array</code></dt>
+<dt><a href="#map">map(stream, fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Maps a function to all the elements of a stream</p>
+</dd>
+<dt><a href="#pick">pick(n)</a> ⇒ <code>Array</code></dt>
 <dd><p>Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream</p>
+</dd>
+<dt><a href="#valueAt">valueAt(index)</a> ⇒ <code>*</code></dt>
+<dd><p>Picks the element at the nth index in a stream. Returns undefined 
+  if stream size is less than the index</p>
 </dd>
 </dl>
 <a name="Stream"></a>
@@ -19,7 +26,7 @@
 ### new Stream(first, restGenerator)
 Creates the Stream object
 
-**Returns**: <code>Object</code> - Returns the new Stream object instance  
+**Returns**: <code>[Stream](#Stream)</code> - Returns the new Stream object instance  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -27,24 +34,68 @@ Creates the Stream object
 | restGenerator | <code>function</code> | function to generate remaining parts of the stream |
 
 <a name="isEmpty"></a>
-## isEmpty() ⇒ <code>boolean</code>
+## isEmpty(stream) ⇒ <code>boolean</code>
 Checks if a stream is empty
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - Returns `true` if the stream is empty  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| stream | <code>[Stream](#Stream)</code> | stream to check for emptiness |
+
 **Example**  
 ```js
-emptyStream.isEmpty();
+Stream.isEmpty(emptyStream);
+  // => true
+```
+<a name="map"></a>
+## map(stream, fn) ⇒ <code>[Stream](#Stream)</code>
+Maps a function to all the elements of a stream
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - Returns a new Stream with the input function applied to entries  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| stream | <code>[Stream](#Stream)</code> | Stream to map function to |
+| fn | <code>function</code> | Function to apply to stream elements |
+
+**Example**  
+```js
+Stream.map(integerStream, function (n) { return n*2; });
   // => true
 ```
 <a name="pick"></a>
-## pick() ⇒ <code>Array</code>
+## pick(n) ⇒ <code>Array</code>
 Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - Returns array of all successfully picked items  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | The number of elements to be picked |
+
 **Example**  
 ```js
 integerStream.pick(3);
   // => [1,2,3]
+```
+<a name="valueAt"></a>
+## valueAt(index) ⇒ <code>\*</code>
+Picks the element at the nth index in a stream. Returns undefined 
+  if stream size is less than the index
+
+**Kind**: global function  
+**Returns**: <code>\*</code> - Value at nth index in stream  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| index | <code>Number</code> | The index of the stream element to be picked |
+
+**Example**  
+```js
+integerStream.valueAt(3);
+  // => 3
 ```
