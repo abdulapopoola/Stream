@@ -11,6 +11,9 @@
 <dt><a href="#map">map(stream, fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Maps a function to all the elements of a stream</p>
 </dd>
+<dt><a href="#add">add(s1, s2)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Adds two streams</p>
+</dd>
 <dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Returns an infinite stream of ones</p>
 </dd>
@@ -68,6 +71,22 @@ Maps a function to all the elements of a stream
 ```js
 Stream.map(integerStream, function (n) { return n*2; });
   // => true
+```
+<a name="add"></a>
+## add(s1, s2) ⇒ <code>[Stream](#Stream)</code>
+Adds two streams
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - Returns a new Stream that is the sum of the Augend and Addend streams  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| s1 | <code>[Stream](#Stream)</code> | Augend stream |
+| s2 | <code>[Stream](#Stream)</code> | Addend stream |
+
+**Example**  
+```js
+Stream.add(s1 s2);
 ```
 <a name="Ones"></a>
 ## Ones() ⇒ <code>[Stream](#Stream)</code>
