@@ -27,10 +27,12 @@ describe('Stream()', function () {
     expect(stream.pick(4)).to.deep.equal([1,1,1,1]);
   });
   
-  it('can retrieve the value at an index in a Stream', function () {
-    var stream = Stream.Ones();
-    expect(stream.streamFirst).to.equal(1);
-    expect(stream.streamRest).to.be.a('function');
-    expect(stream.valueAt(4)).to.equal(1);
+  it('can add two Streams', function () {
+    var s1 = Stream.Ones();
+    var s2 = Stream.Ones();
+    var sum = Stream.add(s1, s2);
+    expect(sum.streamFirst).to.equal(2);
+    expect(sum.streamRest).to.be.a('function');
+    expect(sum.valueAt(4)).to.equal(2);
   });
 });

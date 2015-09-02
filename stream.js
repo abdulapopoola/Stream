@@ -46,11 +46,36 @@ function isEmpty(stream) {
 **/
 function map(stream, fn) {
     if(Stream.isEmpty(stream) || fn == null)
-        return this;
+        fail('Cannot map over empty stream or falsy function');
         
     return new Stream(
         fn(stream.streamFirst), 
         Stream.map(stream.streamRest, fn)
+    );
+}
+
+/**
+*   Adds two streams   
+*
+*   @static
+*   @param {Stream} s1 - Augend stream
+*   @param {Stream} s2 - Addend stream
+*   @returns {Stream} Returns a new Stream that is the sum of the Augend and Addend streams
+*   @example
+*
+*   Stream.add(s1 s2);
+**/
+function add(s1, s2) {
+    if(Stream.isEmpty(s1) || Stream.isEmpty(s2))
+        fail('Cannot add empty streams');
+        
+    var generator = function () {
+        return s1.streamRest() + s2.streamRest();    
+    };
+    
+    return new Stream(
+        s1.streamFirst + s2.streamFirst,
+        generator
     );
 }
 
@@ -111,8 +136,12 @@ function valueAt(index) {
     return items[items.length - 1];
 }
 
+//Static methods
 Stream.isEmpty = isEmpty;
 Stream.map = map;
 Stream.Ones = Ones;
+Stream.add = add;
+
+//Instance methods
 Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
