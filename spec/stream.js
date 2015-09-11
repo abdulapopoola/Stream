@@ -24,9 +24,9 @@ describe('Stream()', function () {
     var stream = Stream.Ones();
     expect(stream.streamFirst).to.equal(1);
     expect(stream.streamRest).to.be.a('function');
-    expect(stream.pick(4)).to.deep.equal([1,1,1,1]);
+    expect(stream.pick(4)).to.deep.equal([1, 1, 1, 1]);
   });
-  
+
   it('can add two Streams', function () {
     var s1 = Stream.Ones();
     var s2 = Stream.Ones();
@@ -34,5 +34,17 @@ describe('Stream()', function () {
     expect(sum.streamFirst).to.equal(2);
     expect(sum.streamRest).to.be.a('function');
     expect(sum.valueAt(4)).to.equal(2);
+  });
+
+  it('can map over a stream', function () {
+    var s1 = Stream.Ones();
+    var double = function (val) {
+      return val * 2;
+    };
+    
+    var twos = Stream.map(s1, double);    
+    expect(twos.streamFirst).to.equal(2);
+    expect(twos.streamRest).to.be.a('function');
+    expect(twos.valueAt(4)).to.equal(2);
   });
 });

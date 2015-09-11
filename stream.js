@@ -10,7 +10,7 @@ function fail(errMessage) {
 *   @param {Function} restGenerator - function to generate remaining parts of the stream
 *   @returns {Stream} Returns the new Stream object instance
 **/
-function Stream (first, restGenerator) {
+function Stream(first, restGenerator) {
     this.streamFirst = first;
     this.streamRest = restGenerator || function () {
         return new Stream(null, null);
@@ -45,12 +45,14 @@ function isEmpty(stream) {
 *   // => true
 **/
 function map(stream, fn) {
-    if(Stream.isEmpty(stream) || fn == null)
+    if (Stream.isEmpty(stream) || fn == null)
         fail('Cannot map over empty stream or falsy function');
-        
+
     return new Stream(
-        fn(stream.streamFirst), 
-        Stream.map(stream.streamRest, fn)
+        fn(stream.streamFirst),
+        function () {
+            return Stream.map(stream.streamRest(), fn);
+        }
     );
 }
 
@@ -66,16 +68,14 @@ function map(stream, fn) {
 *   Stream.add(s1 s2);
 **/
 function add(s1, s2) {
-    if(Stream.isEmpty(s1) || Stream.isEmpty(s2))
+    if (Stream.isEmpty(s1) || Stream.isEmpty(s2))
         fail('Cannot add empty streams');
-        
-    var generator = function () {
-        return s1.streamRest() + s2.streamRest();    
-    };
-    
+
     return new Stream(
         s1.streamFirst + s2.streamFirst,
-        generator
+        function () {
+            return s1.streamRest() + s2.streamRest();
+        }
     );
 }
 
@@ -103,19 +103,19 @@ function Ones() {
 *   // => [1,2,3]
 **/
 function pick(n) {
-    if(!n || Stream.isEmpty(this))
+    if (!n || Stream.isEmpty(this))
         return [];
-        
+
     var items = [];
     var count = 0;
     var s = this;
-    
-    while(count < n && !Stream.isEmpty(s)) {
+
+    while (count < n && !Stream.isEmpty(s)) {
         count++;
         items.push(s.streamFirst);
-        s = s.streamRest(); 
+        s = s.streamRest();
     }
-    
+
     return items;
 }
 
@@ -132,7 +132,7 @@ function pick(n) {
 **/
 function valueAt(index) {
     var items = this.pick(index);
-    
+
     return items[items.length - 1];
 }
 
