@@ -93,6 +93,66 @@ function Ones() {
 };
 
 /**
+*   Zips all input streams together. Works like Python's
+*   zip but returns arrays of arrays instead of a list of tuples
+*   The nth entry of a zipped stream is an an array consisting of
+*   all the nth elements of its constituent streams.
+*
+*   @static
+*   @param {...Stream} [streams] - streams to be zipped (picked off arguments object)
+*   @returns {Stream} A new stream containing the zipped elements
+*   @example
+*
+*   var zipped = Stream.Zip(s1, s2, s3);
+**/
+function zip() {
+    var args = [].slice(arguments);
+    
+    var zippedFirsts = [];
+    for(var i=0, len = args.length; i < len; i++){
+        var s = args[i];
+        zippedFirsts.push(s.streamFirst());
+        s = s.streamRest(); //overwrite the stream so it stores only its rest
+        //check for mutation bugs.
+    }
+
+    return new Stream(
+        zippedFirsts,
+        function () {
+            return Stream.zip(args);
+        }
+    );
+}
+
+/**
+*   Reduces the stream to a value which is the accumulated output obtained over
+*   each stream element. Only valid for finite streams
+*
+*   @param {Function} fn - Function to execute on each argument, 
+*   taking the accumlatedValue so far and the current stream value
+*   @param {*} initialValue - The initialValue to seed the accumulator with
+*   @returns {*} The accumulated output
+*   @example
+*
+*   var sum = stream.reduce(function (sum, n) {
+*       return sum + n;
+*   });
+**/
+function reduce(fn, initialValue) {
+    var s = this;
+    if(Stream.isEmpty(s)) {
+        return initialValue;
+    }
+    
+    if(initialValue == null){
+        initialValue = s.streamFirst();
+        s = s.streamRest();
+    }
+
+    return this.streamRest().reduce(fn, fn(initialValue, s.streamFirst()));
+}
+
+/**
 *   Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
 *
 *   @param {Number} n - The number of elements to be picked
@@ -136,12 +196,36 @@ function valueAt(index) {
     return items[items.length - 1];
 }
 
+/**
+*   Gets the length of a stream - only defined for finite streams
+*
+*   @returns {Number} length - The length of the stream
+*   @example
+*
+*   stream.length()
+*   // => 31
+**/
+function length() {
+    var len = 0;
+    var s = this;
+    
+    while(!Stream.isEmpty(s)) {
+        len++;
+        s = s.streamRest();        
+    }
+    
+    return len;
+}
+
 //Static methods
 Stream.isEmpty = isEmpty;
 Stream.map = map;
 Stream.Ones = Ones;
 Stream.add = add;
+Stream.zip = zip;
 
 //Instance methods
 Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
+Stream.prototype.length = length;
+Stream.prototype.reduce = reduce;
