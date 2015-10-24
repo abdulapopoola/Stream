@@ -93,6 +93,34 @@ function Ones() {
 };
 
 /**
+*   Filters unwanted elements out of a stream   
+*
+*   @param {Function} fn - Filter function
+*   @returns {Stream} Filtered stream
+*   @example
+*
+*   var evenNumbers = Stream.filter(function(val) {
+*       return val % 2 === 0;  
+*   });
+**/
+function filter(fn) {
+    var s = this;
+    if(Stream.isEmpty(s)) {
+        return s;
+    }
+    var first = s.streamFirst();
+    var rest = s.streamRest();
+    if (fn(first)){
+        return new Stream(
+            first,
+            function () { 
+                return rest.filter(fn);
+            });
+    }
+    return rest.filter(fn);
+};
+
+/**
 *   Zips all input streams together. Works like Python's
 *   zip but returns arrays of arrays instead of a list of tuples
 *   The nth entry of a zipped stream is an an array consisting of
@@ -122,6 +150,19 @@ function zip() {
             return Stream.zip(args);
         }
     );
+}
+
+/**
+*   Prints out the first n elements of a stream, will stop if stream length is less
+*   than n 
+*
+*   @param {Number} n - Number of elements to print
+*   @example
+*
+*   s.print(5);
+**/
+function print(n) {
+    //CONTINUE
 }
 
 /**
@@ -217,6 +258,43 @@ function length() {
     return len;
 }
 
+/**
+*   Calculates the sum of the elements of a stream
+*
+*   @returns {Number} The sum of the elements of the stream
+*   @example
+*
+*   stream.sum()
+*   // => 31
+**/
+function sum() {
+    return this.reduce(function (previousValue, currentValue){
+        return previousValue + currentValue;
+    }, 0);
+}
+
+/**
+*   Check if the stream contains an element. Only defined for a finite stream   
+*
+*   @param {*} index - The index of the stream element to be picked
+*   @returns {Boolean} Returns `true` if the stream contains the element
+*   @example
+*
+*   ones.contains(1)
+*   // => true
+**/
+function contains(element) {
+    var s = this;
+    while(!Stream.isEmpty(s)) {
+        if(s.streamFirst() === element){
+            return true;
+        }
+        s = s.streamRest();
+    }
+    
+    return false;
+}
+
 //Static methods
 Stream.isEmpty = isEmpty;
 Stream.map = map;
@@ -229,3 +307,7 @@ Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
 Stream.prototype.length = length;
 Stream.prototype.reduce = reduce;
+Stream.prototype.sum = sum;
+Stream.prototype.filter = filter;
+Stream.prototype.contains = contains;
+Stream.prototype.print = print;
