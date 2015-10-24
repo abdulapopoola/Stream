@@ -1,9 +1,9 @@
 {
-  "name": "stream",
-  "private": true,
+  "name": "stream-js",
+  "private": false,
   "version": "0.0.0",
   "dependencies": {
-      "chai": "~1.8.0"
+    "chai": "~1.8.0"
   },
   "scripts": {
     "test": "mocha ./spec/stream.js"
@@ -12,5 +12,21 @@
     "grunt": "^0.4.5",
     "grunt-jsdoc-ng": "0.0.3",
     "grunt-jsdoc-to-markdown": "^1.1.1"
-  }
+  },
+  "description": "Implementation of the functional programming streams concept in JS.",
+  "main": "gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulapopoola/Stream.git"
+  },
+  "keywords": [
+    "Stream",
+    "JavaScript"
+  ],
+  "author": "abdulapopoola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abdulapopoola/Stream/issues"
+  },
+  "homepage": "https://github.com/abdulapopoola/Stream#readme"
 }
