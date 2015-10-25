@@ -79,12 +79,13 @@
 </dd>
 <dt><a href="#toArray">toArray()</a></dt>
 <dd><p>Constructs an array containing the elements of a finite stream</p>
-<ul>
-<li>returns {Array} A array containing the elements of the stream</li>
-</ul>
+<p> returns {Array} A array containing the elements of the stream</p>
 </dd>
 <dt><a href="#tail">tail()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Returns the tail of a stream</p>
+</dd>
+<dt><a href="#append">append([s])</a></dt>
+<dd><p>Appends a new stream to the end of a current stream</p>
 </dd>
 </dl>
 <a name="Stream"></a>
@@ -400,7 +401,7 @@ Constructs a stream made up of consecutive numbers up to `stop`
 <a name="toArray"></a>
 ## toArray()
 Constructs an array containing the elements of a finite stream
-  *  
+ 
  returns {Array} A array containing the elements of the stream
 
 **Kind**: global function  
@@ -410,3 +411,13 @@ Returns the tail of a stream
 
 **Kind**: global function  
 **Returns**: <code>[Stream](#Stream)</code> - The tail of the stream  
+<a name="append"></a>
+## append([s])
+Appends a new stream to the end of a current stream
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [s] | <code>[Stream](#Stream)</code> | The stream to append to the end of this stream |
+
