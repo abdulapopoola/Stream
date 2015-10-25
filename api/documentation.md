@@ -5,20 +5,62 @@
 </dl>
 ## Functions
 <dl>
+<dt><a href="#head">head()</a> ⇒ <code>*</code></dt>
+<dd><p>Returns the &#39;head&#39; - first value - of a stream</p>
+</dd>
+<dt><a href="#tail">tail()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Returns the tail of a stream</p>
+</dd>
 <dt><a href="#isEmpty">isEmpty()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks if a stream is empty</p>
+</dd>
+<dt><a href="#append">append([s])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Appends a new stream to the end of this stream</p>
+</dd>
+<dt><a href="#pick">pick(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Picks the first n elements out of a stream, terminates when it gets to the
+  nth item or reaches the end of the stream</p>
+</dd>
+<dt><a href="#elementAt">elementAt(index)</a> ⇒ <code>*</code></dt>
+<dd><p>Picks the element at the nth index in a stream. Returns undefined 
+  if stream size is less than the index</p>
+</dd>
+<dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
+<dd><p>Gets the length of a stream - only defined for finite streams</p>
+</dd>
+<dt><a href="#reduce">reduce(fn, initialValue)</a> ⇒ <code>*</code></dt>
+<dd><p>Reduces the stream to a value which is the accumulated output obtained over
+  each stream element. Only valid for finite streams</p>
+</dd>
+<dt><a href="#sum">sum()</a> ⇒ <code>Number</code></dt>
+<dd><p>Calculates the sum of the elements of a stream</p>
 </dd>
 <dt><a href="#map">map(stream, fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Maps a function to all the elements of a stream</p>
 </dd>
-<dt><a href="#add">add(s1, s2)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Adds two streams</p>
-</dd>
-<dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Returns an infinite stream of ones</p>
-</dd>
 <dt><a href="#filter">filter(fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Filters unwanted elements out of a stream</p>
+</dd>
+<dt><a href="#contains">contains(index)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>Check if the stream contains an element. Only defined for a finite stream</p>
+</dd>
+<dt><a href="#walk">walk(fn)</a></dt>
+<dd><p>Walks a stream and applies the input function to the stream. 
+  Stream has to be finite for this to work.</p>
+</dd>
+<dt><a href="#print">print(n)</a></dt>
+<dd><p>Prints out the first n elements of a stream, will stop if stream length is less
+  than n</p>
+</dd>
+<dt><a href="#remove">remove(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Removes the first n elements of a stream.</p>
+</dd>
+<dt><a href="#toArray">toArray()</a></dt>
+<dd><p>Constructs an array containing the elements of a finite stream</p>
+<p> returns {Array} A array containing the elements of the stream</p>
+</dd>
+<dt><a href="#add">add(s1, s2)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Adds two streams</p>
 </dd>
 <dt><a href="#zip">zip([...streams])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Zips all input streams together. Works like Python&#39;s
@@ -32,40 +74,6 @@
 <dt><a href="#fromArray">fromArray([values])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Creates an input stream from an array</p>
 </dd>
-<dt><a href="#walk">walk(fn)</a></dt>
-<dd><p>Walks a stream and applies the input function to the stream. 
-  Stream has to be finite for this to work.</p>
-</dd>
-<dt><a href="#print">print(n)</a></dt>
-<dd><p>Prints out the first n elements of a stream, will stop if stream length is less
-  than n</p>
-</dd>
-<dt><a href="#reduce">reduce(fn, initialValue)</a> ⇒ <code>*</code></dt>
-<dd><p>Reduces the stream to a value which is the accumulated output obtained over
-  each stream element. Only valid for finite streams</p>
-</dd>
-<dt><a href="#pick">pick(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream</p>
-</dd>
-<dt><a href="#valueAt">valueAt(index)</a> ⇒ <code>*</code></dt>
-<dd><p>Picks the element at the nth index in a stream. Returns undefined 
-  if stream size is less than the index</p>
-</dd>
-<dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
-<dd><p>Gets the length of a stream - only defined for finite streams</p>
-</dd>
-<dt><a href="#sum">sum()</a> ⇒ <code>Number</code></dt>
-<dd><p>Calculates the sum of the elements of a stream</p>
-</dd>
-<dt><a href="#contains">contains(index)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if the stream contains an element. Only defined for a finite stream</p>
-</dd>
-<dt><a href="#remove">remove(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Removes the first n elements of a stream.</p>
-</dd>
-<dt><a href="#head">head()</a> ⇒ <code>*</code></dt>
-<dd><p>Returns the &#39;head&#39; - first value - of a stream</p>
-</dd>
 <dt><a href="#fromInterval">fromInterval([low], high)</a></dt>
 <dd><p>Constructs a stream made up of consecutive numbers in the
  range [low high]</p>
@@ -77,15 +85,8 @@
 <dt><a href="#upTo">upTo([stop])</a></dt>
 <dd><p>Constructs a stream made up of consecutive numbers up to <code>stop</code></p>
 </dd>
-<dt><a href="#toArray">toArray()</a></dt>
-<dd><p>Constructs an array containing the elements of a finite stream</p>
-<p> returns {Array} A array containing the elements of the stream</p>
-</dd>
-<dt><a href="#tail">tail()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Returns the tail of a stream</p>
-</dd>
-<dt><a href="#append">append([s])</a></dt>
-<dd><p>Appends a new stream to the end of a current stream</p>
+<dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Returns an infinite stream of ones</p>
 </dd>
 </dl>
 <a name="Stream"></a>
@@ -102,6 +103,18 @@ Creates the Stream object
 | first | <code>\*</code> | First element of the stream |
 | restGenerator | <code>function</code> | function to generate remaining parts of the stream |
 
+<a name="head"></a>
+## head() ⇒ <code>\*</code>
+Returns the 'head' - first value - of a stream
+
+**Kind**: global function  
+**Returns**: <code>\*</code> - The head of the stream  
+<a name="tail"></a>
+## tail() ⇒ <code>[Stream](#Stream)</code>
+Returns the tail of a stream
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - The tail of the stream  
 <a name="isEmpty"></a>
 ## isEmpty() ⇒ <code>boolean</code>
 Checks if a stream is empty
@@ -112,6 +125,91 @@ Checks if a stream is empty
 ```js
 s.isEmpty();
   // => true
+```
+<a name="append"></a>
+## append([s]) ⇒ <code>[Stream](#Stream)</code>
+Appends a new stream to the end of this stream
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - A new stream with s appended to the current stream  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [s] | <code>[Stream](#Stream)</code> | The stream to append to the end of this stream |
+
+<a name="pick"></a>
+## pick(n) ⇒ <code>[Stream](#Stream)</code>
+Picks the first n elements out of a stream, terminates when it gets to the
+  nth item or reaches the end of the stream
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - Returns a stream containing the picked items  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | The number of elements to be picked |
+
+**Example**  
+```js
+integerStream.pick(3);
+```
+<a name="elementAt"></a>
+## elementAt(index) ⇒ <code>\*</code>
+Picks the element at the nth index in a stream. Returns undefined 
+  if stream size is less than the index
+
+**Kind**: global function  
+**Returns**: <code>\*</code> - Value at nth index in stream  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| index | <code>Number</code> | The index of the stream element to be picked |
+
+**Example**  
+```js
+integerStream.valueAt(3);
+  // => 3
+```
+<a name="length"></a>
+## length() ⇒ <code>Number</code>
+Gets the length of a stream - only defined for finite streams
+
+**Kind**: global function  
+**Returns**: <code>Number</code> - length - The length of the stream  
+**Example**  
+```js
+stream.length()
+  // => 31
+```
+<a name="reduce"></a>
+## reduce(fn, initialValue) ⇒ <code>\*</code>
+Reduces the stream to a value which is the accumulated output obtained over
+  each stream element. Only valid for finite streams
+
+**Kind**: global function  
+**Returns**: <code>\*</code> - The accumulated output  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| fn | <code>function</code> | Function to execute on each argument,    taking the accumlatedValue so far and the current stream value |
+| initialValue | <code>\*</code> | The initialValue to seed the accumulator with |
+
+**Example**  
+```js
+var sum = stream.reduce(function (sum, n) {
+      return sum + n;
+  });
+```
+<a name="sum"></a>
+## sum() ⇒ <code>Number</code>
+Calculates the sum of the elements of a stream
+
+**Kind**: global function  
+**Returns**: <code>Number</code> - The sum of the elements of the stream  
+**Example**  
+```js
+stream.sum()
+  // => 31
 ```
 <a name="map"></a>
 ## map(stream, fn) ⇒ <code>[Stream](#Stream)</code>
@@ -130,32 +228,6 @@ Maps a function to all the elements of a stream
 Stream.map(integerStream, function (n) { return n*2; });
   // => true
 ```
-<a name="add"></a>
-## add(s1, s2) ⇒ <code>[Stream](#Stream)</code>
-Adds two streams
-
-**Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - Returns a new Stream that is the sum of the Augend and Addend streams  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| s1 | <code>[Stream](#Stream)</code> | Augend stream |
-| s2 | <code>[Stream](#Stream)</code> | Addend stream |
-
-**Example**  
-```js
-Stream.add(s1 s2);
-```
-<a name="Ones"></a>
-## Ones() ⇒ <code>[Stream](#Stream)</code>
-Returns an infinite stream of ones
-
-**Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - Value at nth index in stream  
-**Example**  
-```js
-var ones = Stream.Ones();
-```
 <a name="filter"></a>
 ## filter(fn) ⇒ <code>[Stream](#Stream)</code>
 Filters unwanted elements out of a stream
@@ -172,6 +244,94 @@ Filters unwanted elements out of a stream
 var evenNumbers = Stream.filter(function(val) {
       return val % 2 === 0;  
   });
+```
+<a name="contains"></a>
+## contains(index) ⇒ <code>Boolean</code>
+Check if the stream contains an element. Only defined for a finite stream
+
+**Kind**: global function  
+**Returns**: <code>Boolean</code> - Returns `true` if the stream contains the element  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| index | <code>\*</code> | The index of the stream element to be picked |
+
+**Example**  
+```js
+ones.contains(1)
+  // => true
+```
+<a name="walk"></a>
+## walk(fn)
+Walks a stream and applies the input function to the stream. 
+  Stream has to be finite for this to work.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| fn | <code>function</code> | The function to apply to every element of the stream |
+
+**Example**  
+```js
+s.walk(function(element) {
+       alert(element);
+  });
+```
+<a name="print"></a>
+## print(n)
+Prints out the first n elements of a stream, will stop if stream length is less
+  than n
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | Number of elements to print |
+
+**Example**  
+```js
+s.print(5);
+```
+<a name="remove"></a>
+## remove(n) ⇒ <code>[Stream](#Stream)</code>
+Removes the first n elements of a stream.
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - The new stream with elements starting an
+  index n + 1 or an empty stream if n > stream.length  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| n | <code>Number</code> | The number of elements to be removed |
+
+**Example**  
+```js
+integerStream.remove(3);
+  // => [4,5,6]
+```
+<a name="toArray"></a>
+## toArray()
+Constructs an array containing the elements of a finite stream
+ 
+ returns {Array} A array containing the elements of the stream
+
+**Kind**: global function  
+<a name="add"></a>
+## add(s1, s2) ⇒ <code>[Stream](#Stream)</code>
+Adds two streams
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - Returns a new Stream that is the sum of the Augend and Addend streams  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| s1 | <code>[Stream](#Stream)</code> | Augend stream |
+| s2 | <code>[Stream](#Stream)</code> | Addend stream |
+
+**Example**  
+```js
+Stream.add(s1 s2);
 ```
 <a name="zip"></a>
 ## zip([...streams]) ⇒ <code>[Stream](#Stream)</code>
@@ -221,150 +381,6 @@ Creates an input stream from an array
 ```js
 var s = Stream.fromArray([1,2,3,4]);
 ```
-<a name="walk"></a>
-## walk(fn)
-Walks a stream and applies the input function to the stream. 
-  Stream has to be finite for this to work.
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | The function to apply to every element of the stream |
-
-**Example**  
-```js
-s.walk(function(element) {
-       alert(element);
-  });
-```
-<a name="print"></a>
-## print(n)
-Prints out the first n elements of a stream, will stop if stream length is less
-  than n
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| n | <code>Number</code> | Number of elements to print |
-
-**Example**  
-```js
-s.print(5);
-```
-<a name="reduce"></a>
-## reduce(fn, initialValue) ⇒ <code>\*</code>
-Reduces the stream to a value which is the accumulated output obtained over
-  each stream element. Only valid for finite streams
-
-**Kind**: global function  
-**Returns**: <code>\*</code> - The accumulated output  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fn | <code>function</code> | Function to execute on each argument,    taking the accumlatedValue so far and the current stream value |
-| initialValue | <code>\*</code> | The initialValue to seed the accumulator with |
-
-**Example**  
-```js
-var sum = stream.reduce(function (sum, n) {
-      return sum + n;
-  });
-```
-<a name="pick"></a>
-## pick(n) ⇒ <code>[Stream](#Stream)</code>
-Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
-
-**Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - Returns a stream containing the picked items  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| n | <code>Number</code> | The number of elements to be picked |
-
-**Example**  
-```js
-integerStream.pick(3);
-```
-<a name="valueAt"></a>
-## valueAt(index) ⇒ <code>\*</code>
-Picks the element at the nth index in a stream. Returns undefined 
-  if stream size is less than the index
-
-**Kind**: global function  
-**Returns**: <code>\*</code> - Value at nth index in stream  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| index | <code>Number</code> | The index of the stream element to be picked |
-
-**Example**  
-```js
-integerStream.valueAt(3);
-  // => 3
-```
-<a name="length"></a>
-## length() ⇒ <code>Number</code>
-Gets the length of a stream - only defined for finite streams
-
-**Kind**: global function  
-**Returns**: <code>Number</code> - length - The length of the stream  
-**Example**  
-```js
-stream.length()
-  // => 31
-```
-<a name="sum"></a>
-## sum() ⇒ <code>Number</code>
-Calculates the sum of the elements of a stream
-
-**Kind**: global function  
-**Returns**: <code>Number</code> - The sum of the elements of the stream  
-**Example**  
-```js
-stream.sum()
-  // => 31
-```
-<a name="contains"></a>
-## contains(index) ⇒ <code>Boolean</code>
-Check if the stream contains an element. Only defined for a finite stream
-
-**Kind**: global function  
-**Returns**: <code>Boolean</code> - Returns `true` if the stream contains the element  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| index | <code>\*</code> | The index of the stream element to be picked |
-
-**Example**  
-```js
-ones.contains(1)
-  // => true
-```
-<a name="remove"></a>
-## remove(n) ⇒ <code>[Stream](#Stream)</code>
-Removes the first n elements of a stream.
-
-**Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - The new stream with elements starting an
-  index n + 1 or an empty stream if n > stream.length  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| n | <code>Number</code> | The number of elements to be removed |
-
-**Example**  
-```js
-integerStream.remove(3);
-  // => [4,5,6]
-```
-<a name="head"></a>
-## head() ⇒ <code>\*</code>
-Returns the 'head' - first value - of a stream
-
-**Kind**: global function  
-**Returns**: <code>\*</code> - The head of the stream  
 <a name="fromInterval"></a>
 ## fromInterval([low], high)
 Constructs a stream made up of consecutive numbers in the
@@ -398,26 +414,13 @@ Constructs a stream made up of consecutive numbers up to `stop`
 | --- | --- | --- |
 | [stop] | <code>Number</code> | The maximum and last value of the stream    returns {Stream} A finite stream with elements in the range [0, stop] |
 
-<a name="toArray"></a>
-## toArray()
-Constructs an array containing the elements of a finite stream
- 
- returns {Array} A array containing the elements of the stream
+<a name="Ones"></a>
+## Ones() ⇒ <code>[Stream](#Stream)</code>
+Returns an infinite stream of ones
 
 **Kind**: global function  
-<a name="tail"></a>
-## tail() ⇒ <code>[Stream](#Stream)</code>
-Returns the tail of a stream
-
-**Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - The tail of the stream  
-<a name="append"></a>
-## append([s])
-Appends a new stream to the end of a current stream
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [s] | <code>[Stream](#Stream)</code> | The stream to append to the end of this stream |
-
+**Returns**: <code>[Stream](#Stream)</code> - Value at nth index in stream  
+**Example**  
+```js
+var ones = Stream.Ones();
+```
