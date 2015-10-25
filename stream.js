@@ -20,16 +20,14 @@ function Stream(first, restGenerator) {
 /**
 *   Checks if a stream is empty   
 *
-*   @static
-*   @param {Stream} stream - stream to check for emptiness
 *   @returns {boolean} Returns `true` if the stream is empty
 *   @example
 *
-*   Stream.isEmpty(emptyStream);
+*   s.isEmpty();
 *   // => true
 **/
 function isEmpty(stream) {
-    return stream.streamFirst == null;
+    return this.streamFirst == null;
 }
 
 /**
@@ -104,12 +102,11 @@ function Ones() {
 *   });
 **/
 function filter(fn) {
-    var s = this;
-    if(Stream.isEmpty(s)) {
-        return s;
+    if(this.isEmpty()) {
+        return this;
     }
-    var first = s.streamFirst();
-    var rest = s.streamRest();
+    var first = this.head();
+    var rest = this.tail();
     if (fn(first)){
         return new Stream(
             first,
@@ -153,6 +150,63 @@ function zip() {
 }
 
 /**
+*   Creates an input stream using a list of arguments
+*
+*   @static
+*   @param {...*} [values] - values to be used in the stream
+*   @returns {Stream} A new stream containing the elements
+*   @example
+*
+*   var s = Stream.create(1,2,3,4);
+**/
+function create( /* arguments */) {
+    if(arguments.length === 0) {
+        return new Stream(null, null);
+    }
+    
+    var tailArgs = [].slice.call(arguments,1);
+    return new Stream(
+        arguments[0],
+        function () {
+            return Stream.create.apply(null, tailArgs);
+        }
+    );
+}
+
+/**
+*   Creates an input stream from an array
+*
+*   @static
+*   @param {Array} [values] - array to use in creating the stream
+*   @returns {Stream} A new stream containing the array elements
+*   @example
+*
+*   var s = Stream.fromArray([1,2,3,4]);
+**/
+function fromArray(values) {
+    return Stream.create(null, values);
+}
+
+/**
+*   Walks a stream and applies the input function to the stream. 
+*   Stream has to be finite for this to work.
+*
+*   @param {Function} fn - The function to apply to every element of the stream
+*   @example
+*
+*   s.walk(function(element) {
+*        alert(element);
+*   });
+**/
+function walk(fn) {
+    var s = this;
+    while (!s.isEmpty()){
+        fn(s.head());
+        s = s.tail();
+    }
+}
+
+/**
 *   Prints out the first n elements of a stream, will stop if stream length is less
 *   than n 
 *
@@ -162,7 +216,11 @@ function zip() {
 *   s.print(5);
 **/
 function print(n) {
-    //CONTINUE
+    var streamToPrint = this.pick(n);
+    
+    streamToPrint.walk(function (element){
+        console.log(element);
+    });
 }
 
 /**
@@ -197,27 +255,23 @@ function reduce(fn, initialValue) {
 *   Picks the first n elements out of a stream, terminates when it gets to the nth item or reaches the end of the stream
 *
 *   @param {Number} n - The number of elements to be picked
-*   @returns {Array} Returns array of all successfully picked items
+*   @returns {Stream} Returns a stream containing the picked items
 *   @example
 *
 *   integerStream.pick(3);
-*   // => [1,2,3]
 **/
 function pick(n) {
-    if (!n || Stream.isEmpty(this))
-        return [];
-
-    var items = [];
-    var count = 0;
-    var s = this;
-
-    while (count < n && !Stream.isEmpty(s)) {
-        count++;
-        items.push(s.streamFirst);
-        s = s.streamRest();
-    }
-
-    return items;
+    if (!n || Stream.isEmpty(this)) {
+        return new Stream(null, null);
+    } 
+    
+    var that = this;
+    return new Stream(
+        this.head(),
+        function () {
+            return that.tail().pick(n - 1);
+        }
+    );
 }
 
 /**
@@ -295,12 +349,142 @@ function contains(element) {
     return false;
 }
 
+/**
+*   Removes the first n elements of a stream.
+*
+*   @param {Number} n - The number of elements to be removed
+*   @returns {Stream} The new stream with elements starting an
+*   index n + 1 or an empty stream if n > stream.length
+*   @example
+*
+*   integerStream.remove(3);
+*   // => [4,5,6]
+**/
+function remove(n) {
+    var s = this;
+    while(n > 0) {
+        if (Stream.isEmpty(s)) {
+            return new Stream(null, null);
+        }
+        s = s.streamRest();
+    }
+    
+    return new Stream(
+        s.streamFirst(),
+        function () {
+            return s.streamRest()
+        }
+    );
+}
+
+/**
+*   Returns the 'head' - first value - of a stream
+*
+*   @returns {*} The head of the stream
+**/
+function head() {
+    if(this.isEmpty()){
+        throw 'Stream is empty!'
+    }
+    return this.streamFirst;
+}
+
+
+/**
+ *  Constructs a stream made up of consecutive numbers in the
+ *  range [low high]
+ *  
+ *  @static
+ *  @param {*} [low=0] - The lower limit value of the stream
+ *  @param {*} high - The upper limit value of the stream
+ *  
+ *  returns {Stream} A finite stream with elements in the range [low, high]
+ */
+function fromInterval(low, high){
+    if(!low){
+        low = 0;
+    }
+    if (!high || low === high){
+        return new Stream(low, null);
+    }
+    
+    return new Stream(
+        low,
+        Stream.fromInterval(low + 1, high)
+    );
+}
+
+/**
+ *  Constructs an infinite stream of consecutive numbers starting 
+ *  from integer `start`
+ *  
+ *  @static
+ *  @param {Number} [start=0] - The integer to start the stream from
+ *  
+ *  returns {Stream} A infinite stream with elements starting from `start`
+ */
+function from(start) {
+    if(!start){
+        start = 0;
+    }
+    
+    return new Stream(
+        start,
+        Stream.from(start + 1)
+    );
+}
+
+/**
+ *  Constructs a stream made up of consecutive numbers up to `stop`
+ *  
+ *  @static
+ *  @param {Number} [stop] - The maximum and last value of the stream
+ *  
+ *  returns {Stream} A finite stream with elements in the range [0, stop]
+ */
+function upTo(stop){
+    return Stream.fromInterval(0, stop);
+}
+
+/**
+ *  Constructs an array containing the elements of a finite stream
+ *   *  
+ *  returns {Array} A array containing the elements of the stream
+ */
+function toArray(){
+    var items = [];
+    
+    var storer = function (val) {
+        items.push(val);
+    }
+    
+    this.walk(storer);
+    return items;
+}
+
+/**
+*   Returns the tail of a stream
+*
+*   @returns {Stream} The tail of the stream
+**/
+function tail() {
+    if(this.isEmpty()){
+        throw 'Stream is empty!'
+    }
+    
+    return this.streamRest();
+}
+
 //Static methods
-Stream.isEmpty = isEmpty;
 Stream.map = map;
 Stream.Ones = Ones;
 Stream.add = add;
 Stream.zip = zip;
+Stream.create = create;
+Stream.fromArray = fromArray;
+Stream.fromInterval = fromInterval;
+Stream.from = from;
+Stream.upTo = upTo;
 
 //Instance methods
 Stream.prototype.pick = pick;
@@ -311,3 +495,8 @@ Stream.prototype.sum = sum;
 Stream.prototype.filter = filter;
 Stream.prototype.contains = contains;
 Stream.prototype.print = print;
+Stream.prototype.remove = remove;
+Stream.prototype.head = head;
+Stream.prototype.tail = tail;
+Stream.prototype.isEmpty = isEmpty;
+Stream.prototype.toArray = toArray;
