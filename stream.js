@@ -448,7 +448,7 @@ function upTo(stop){
 
 /**
  *  Constructs an array containing the elements of a finite stream
- *   *  
+ *  
  *  returns {Array} A array containing the elements of the stream
  */
 function toArray(){
@@ -475,6 +475,25 @@ function tail() {
     return this.streamRest();
 }
 
+/**
+ *  Appends a new stream to the end of a current stream
+ * 
+  *  @param {Stream} [s] - The stream to append to the end of this stream
+ */
+function append(s) {
+    if(this.isEmpty()){
+        return s;
+    }
+    
+    var that = this;
+    return new Stream(
+        this.head(),
+        function () {
+            return that.tail().append(s); 
+        }
+    );
+}
+
 //Static methods
 Stream.map = map;
 Stream.Ones = Ones;
@@ -490,6 +509,7 @@ Stream.upTo = upTo;
 Stream.prototype.head = head;
 Stream.prototype.tail = tail;
 Stream.prototype.isEmpty = isEmpty;
+Stream.prototype.append = append;
 Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
 Stream.prototype.length = length;
