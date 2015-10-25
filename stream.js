@@ -174,7 +174,7 @@ function reduce(fn, initialValue) {
         s = s.tail();
     }
 
-    return this.tail().reduce(fn, fn(initialValue, s.head()));
+    return s.tail().reduce(fn, fn(initialValue, s.head()));
 }
 
 /**
@@ -205,8 +205,8 @@ function sum() {
 *   // => true
 **/
 function map(fn) {
-    if (this.isEmpty() || fn == null) {
-        fail('Cannot map over empty stream or undefined function');
+    if (fn == null) {
+        fail('Mapping function has to be defined');
     }
 
     var that = this;
@@ -282,7 +282,11 @@ function walk(fn) {
     var s = this;
     while (!s.isEmpty()){
         fn(s.head());
-        s = s.tail();
+        try {
+            s = s.tail();
+        } catch (e) {
+            return; //end of stream reached since tail throws an exception
+        }
     }
 }
 

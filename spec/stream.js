@@ -132,6 +132,58 @@ describe('Stream()', function () {
     expect(sum.elementAt(3)).to.deep.equal([8,20]);
     expect(sum.elementAt(4)).to.deep.equal([25]);
   });
+
+  it('can find the length of a stream', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var sum = s1.length();
+    expect(sum).to.equal(3);
+  });
+
+  it('can reduce a stream with no initial values', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var sum = s1.reduce(function (a, b) {
+      return a + b;
+    });
+    expect(sum).to.equal(9);
+    
+    var product = s1.reduce(function (a, b) {
+      return a * b;
+    });
+    expect(product).to.equal(15);
+  });
   
+  it('can reduce a stream with initial values', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var sum = s1.reduce(function (a, b) {
+      return a + b;
+    }, 10);
+    expect(sum).to.equal(19);
+    
+    var product = s1.reduce(function (a, b) {
+      return a * b;
+    }, 2);
+    expect(product).to.equal(30);
+  });
+
+  it('can sum up a stream', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var sum = s1.sum();
+    expect(sum).to.equal(9);
+  }); 
+
+  it('can map over elements of a stream', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var triples = s1.map(function (element) {
+      return element * 3;
+    });
+    expect(triples.toArray()).to.deep.equal([3,9,15]);
+  }); 
   
+  it('can convert a finite stream to an array', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var doubled = s1.map(function (element){
+      return 2 * element;
+    });
+    expect(doubled.toArray()).to.deep.equal([2,6,10]);
+  });
 });
