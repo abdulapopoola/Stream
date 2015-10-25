@@ -23,7 +23,7 @@
 </dd>
 <dt><a href="#elementAt">elementAt(index)</a> ⇒ <code>*</code></dt>
 <dd><p>Picks the element at the nth index in a stream. Returns undefined 
-  if stream size is less than the index</p>
+  if stream size is less than the index. Indexing is zero-based</p>
 </dd>
 <dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
 <dd><p>Gets the length of a stream - only defined for finite streams</p>
@@ -156,14 +156,14 @@ integerStream.pick(3);
 <a name="elementAt"></a>
 ## elementAt(index) ⇒ <code>\*</code>
 Picks the element at the nth index in a stream. Returns undefined 
-  if stream size is less than the index
+  if stream size is less than the index. Indexing is zero-based
 
 **Kind**: global function  
 **Returns**: <code>\*</code> - Value at nth index in stream  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>Number</code> | The index of the stream element to be picked |
+| index | <code>Number</code> | The zero-based index of the stream element to be picked |
 
 **Example**  
 ```js
@@ -349,7 +349,7 @@ Zips all input streams together. Works like Python's
 
 **Example**  
 ```js
-var zipped = Stream.Zip(s1, s2, s3);
+var zipped = Stream.zip(s1, s2, s3);
 ```
 <a name="create"></a>
 ## create([...values]) ⇒ <code>[Stream](#Stream)</code>

@@ -102,9 +102,9 @@ function pick(n) {
 
 /**
 *   Picks the element at the nth index in a stream. Returns undefined 
-*   if stream size is less than the index
+*   if stream size is less than the index. Indexing is zero-based
 *
-*   @param {Number} index - The index of the stream element to be picked
+*   @param {Number} index - The zero-based index of the stream element to be picked
 *   @returns {*} Value at nth index in stream
 *   @example
 *
@@ -112,7 +112,7 @@ function pick(n) {
 *   // => 3
 **/
 function elementAt(index) {
-    if(!index){
+    if(index == null){
         return;
     }
     
@@ -122,6 +122,7 @@ function elementAt(index) {
             return;
         }
         s = s.tail();
+        index--;
     }
     
     return s.head();    
@@ -203,7 +204,7 @@ function sum() {
 *   Stream.map(integerStream, function (n) { return n*2; });
 *   // => true
 **/
-function map(stream, fn) {
+function map(fn) {
     if (this.isEmpty() || fn == null) {
         fail('Cannot map over empty stream or undefined function');
     }
@@ -212,7 +213,7 @@ function map(stream, fn) {
     return new Stream(
         fn(this.head()),
         function () {
-            return that.map(stream.tail(), fn);
+            return that.tail().map(fn);
         }
     );
 }
@@ -358,15 +359,13 @@ function toArray(){
 *   Stream.add(s1 s2);
 **/
 function add(s1, s2) {
-    if (s1.isEmpty() || s2.isEmpty())
-        fail('Cannot add empty streams');
-
-    return new Stream(
-        s1.head() + s2.head(),
-        function () {
-            return s1.tail() + s2.tail();
-        }
-    );
+    var zipped = Stream.zip(s1, s2);
+    
+    return zipped.map(function (zippedElement) {
+        return zippedElement.reduce(function (a, b) {
+            return a + b;
+        });
+    });
 }
 
 /**
@@ -380,23 +379,25 @@ function add(s1, s2) {
 *   @returns {Stream} A new stream containing the zipped elements
 *   @example
 *
-*   var zipped = Stream.Zip(s1, s2, s3);
+*   var zipped = Stream.zip(s1, s2, s3);
 **/
 function zip(/* arguments */) {
-    var args = [].slice(arguments);
+    var args = [].slice.call(arguments);
     
     var zippedFirsts = [];
     for(var i=0, len = args.length; i < len; i++){
         var s = args[i];
+        if(s.isEmpty()){
+            continue;
+        }
         zippedFirsts.push(s.head());
-        s = s.tail(); //overwrite the stream so it stores only its rest
-        //check for mutation bugs.
+        args[i] = s.tail(); //overwrite stream with tail
     }
 
     return new Stream(
         zippedFirsts,
         function () {
-            return Stream.zip(args);
+            return Stream.zip.apply(null, args);
         }
     );
 }
@@ -459,7 +460,9 @@ function fromInterval(low, high){
     
     return new Stream(
         low,
-        Stream.fromInterval(low + 1, high)
+        function () {
+            return Stream.fromInterval(low + 1, high);
+        }
     );
 }
 
@@ -479,7 +482,9 @@ function from(start) {
     
     return new Stream(
         start,
-        Stream.from(start + 1)
+        function () {
+            return Stream.from(start + 1);
+        }
     );
 }
 
