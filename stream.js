@@ -384,7 +384,7 @@ function remove(n) {
 **/
 function head() {
     if(this.isEmpty()){
-        throw 'Stream is empty!'
+        fail('Stream is empty!');
     }
     return this.streamFirst;
 }
@@ -469,7 +469,7 @@ function toArray(){
 **/
 function tail() {
     if(this.isEmpty()){
-        throw 'Stream is empty!'
+        fail('Stream is empty!');
     }
     
     return this.streamRest();
@@ -487,6 +487,9 @@ Stream.from = from;
 Stream.upTo = upTo;
 
 //Instance methods
+Stream.prototype.head = head;
+Stream.prototype.tail = tail;
+Stream.prototype.isEmpty = isEmpty;
 Stream.prototype.pick = pick;
 Stream.prototype.valueAt = valueAt;
 Stream.prototype.length = length;
@@ -496,7 +499,4 @@ Stream.prototype.filter = filter;
 Stream.prototype.contains = contains;
 Stream.prototype.print = print;
 Stream.prototype.remove = remove;
-Stream.prototype.head = head;
-Stream.prototype.tail = tail;
-Stream.prototype.isEmpty = isEmpty;
 Stream.prototype.toArray = toArray;
