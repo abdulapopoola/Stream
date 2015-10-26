@@ -23,10 +23,10 @@ function Stream(first, restGenerator) {
 *   @returns {*} The head of the stream
 **/
 function head() {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
         fail('Stream is empty!');
     }
-    
+
     return this.streamFirst;
 }
 
@@ -36,10 +36,10 @@ function head() {
 *   @returns {Stream} The tail of the stream
 **/
 function tail() {
-    if(this.isEmpty()){
+    if (this.isEmpty()) {
         fail('Stream is empty!');
     }
-    
+
     return this.streamRest();
 }
 
@@ -57,23 +57,47 @@ function isEmpty(stream) {
 }
 
 /**
+*   Checks if the tail of a Stream is empty   
+*
+*   @returns {boolean} Returns `true` if the tail is empty
+*   @example
+*
+*   s.hasEmptyTail();
+*   // => true
+**/
+function hasEmptyTail(stream) {
+    if (this.streamRest == null) {
+        return true;
+    }
+    
+    //Slower, invoke tail function and see if it throws an Error
+    try {
+        this.tail();
+    } catch (e) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  *  Appends a new stream to the end of this stream
  * 
  *  @param {Stream} [s] - The stream to append to the end of this stream
  *  @returns {Stream} A new stream with s appended to the current stream
  */
 function append(s) {
-    if(this.isEmpty()){
+    if (this.isEmpty()) {
         return s;
     }
-    
+
     var that = this;
     return new Stream(
         this.head(),
         function () {
-            return that.tail().append(s); 
+            return that.tail().append(s);
         }
-    );
+        );
 }
 
 /**
@@ -89,15 +113,15 @@ function append(s) {
 function pick(n) {
     if (!n || this.isEmpty()) {
         return new Stream(null, null);
-    } 
-    
+    }
+
     var that = this;
     return new Stream(
         this.head(),
         function () {
             return that.tail().pick(n - 1);
         }
-    );
+        );
 }
 
 /**
@@ -112,24 +136,20 @@ function pick(n) {
 *   // => 3
 **/
 function elementAt(index) {
-    if(index == null){
+    if (index == null) {
         return;
     }
-    
+
     var s = this;
     while (index > 0) {
-        if(s.isEmpty()) {
+        if (s.isEmpty() || s.hasEmptyTail()) {
             return;
         }
-        try {
-            s = s.tail();
-        } catch (e){
-            return;
-        }
+        s = s.tail();
         index--;
     }
-    
-    return s.head();    
+
+    return s.head();
 }
 
 /**
@@ -144,12 +164,12 @@ function elementAt(index) {
 function length() {
     var len = 0;
     var s = this;
-    
-    while(!s.isEmpty()) {
+
+    while (!s.isEmpty()) {
         len++;
-        s = s.tail();        
+        s = s.tail();
     }
-    
+
     return len;
 }
 
@@ -169,11 +189,11 @@ function length() {
 **/
 function reduce(fn, initialValue) {
     var s = this;
-    if(s.isEmpty()) {
+    if (s.isEmpty()) {
         return initialValue;
     }
-    
-    if(initialValue == null){
+
+    if (initialValue == null) {
         initialValue = s.head();
         s = s.tail();
     }
@@ -191,7 +211,7 @@ function reduce(fn, initialValue) {
 *   // => 31
 **/
 function sum() {
-    return this.reduce(function (previousValue, currentValue){
+    return this.reduce(function (previousValue, currentValue) {
         return previousValue + currentValue;
     }, 0);
 }
@@ -219,7 +239,7 @@ function map(fn) {
         function () {
             return that.tail().map(fn);
         }
-    );
+        );
 }
 
 /**
@@ -234,15 +254,15 @@ function map(fn) {
 *   });
 **/
 function filter(fn) {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
         return this;
     }
     var first = this.head();
     var rest = this.tail();
-    if (fn(first)){
+    if (fn(first)) {
         return new Stream(
             first,
-            function () { 
+            function () {
                 return rest.filter(fn);
             });
     }
@@ -261,13 +281,13 @@ function filter(fn) {
 **/
 function contains(element) {
     var s = this;
-    while(!s.isEmpty()) {
-        if(s.head() === element){
+    while (!s.isEmpty()) {
+        if (s.head() === element) {
             return true;
         }
         s = s.tail();
     }
-    
+
     return false;
 }
 
@@ -284,13 +304,13 @@ function contains(element) {
 **/
 function walk(fn) {
     var s = this;
-    while (!s.isEmpty()){
+    while (!s.isEmpty()) {
         fn(s.head());
-        try {
-            s = s.tail();
-        } catch (e) {
-            return; //end of stream reached since tail throws an exception
+        if (s.hasEmptyTail()) {
+            //all done, head processed and nothing left
+            return;
         }
+        s = s.tail();
     }
 }
 
@@ -305,8 +325,8 @@ function walk(fn) {
 **/
 function print(n) {
     var streamToPrint = this.pick(n);
-    
-    streamToPrint.walk(function (element){
+
+    streamToPrint.walk(function (element) {
         console.log(element);
     });
 }
@@ -324,20 +344,20 @@ function print(n) {
 **/
 function remove(n) {
     var s = this;
-    while(n > 0) {
+    while (n > 0) {
         if (s.isEmpty()) {
             return new Stream(null, null);
         }
         s = s.tail();
         n--;
     }
-    
+
     return new Stream(
         s.head(),
         function () {
             return s.tail()
         }
-    );
+        );
 }
 
 /**
@@ -345,13 +365,13 @@ function remove(n) {
  *  
  *  returns {Array} A array containing the elements of the stream
  */
-function toArray(){
+function toArray() {
     var items = [];
-    
+
     var storer = function (val) {
         items.push(val);
     }
-    
+
     this.walk(storer);
     return items;
 }
@@ -369,7 +389,7 @@ function toArray(){
 **/
 function add(s1, s2) {
     var zipped = Stream.zip(s1, s2);
-    
+
     return zipped.map(function (zippedElement) {
         return zippedElement.reduce(function (a, b) {
             return a + b;
@@ -392,38 +412,30 @@ function add(s1, s2) {
 **/
 function zip(/* arguments */) {
     var args = [].slice.call(arguments);
-    
+
     var zippedFirsts = [];
-    for(var i=0, len = args.length; i < len; i++){
+    for (var i = 0, len = args.length; i < len; i++) {
         var s = args[i];
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             continue;
         }
         zippedFirsts.push(s.head());
     }
 
-    //Find cleaner pattern
     return new Stream(
         zippedFirsts,
         function () {
-            var moved = [];
-            for(var i=0, len = args.length; i < len; i++){
+            var tails = [];
+            for (var i = 0, len = args.length; i < len; i++) {
                 var tmp = args[i];
-                var hasTail = true;
-                try {
-                    tmp = tmp.tail();
-                } catch (e) {
-                    hasTail = false;
-                } finally {
-                    if(hasTail) {
-                        moved.push(tmp);
-                    }
+                if (!tmp.hasEmptyTail()) {
+                    tails.push(tmp.tail());
                 }
             }
-            
-            return Stream.zip.apply(null, moved);
+
+            return Stream.zip.apply(null, tails);
         }
-    );
+        );
 }
 
 /**
@@ -437,17 +449,17 @@ function zip(/* arguments */) {
 *   var s = Stream.create(1,2,3,4);
 **/
 function create( /* arguments */) {
-    if(arguments.length === 0) {
+    if (arguments.length === 0) {
         return new Stream(null, null);
     }
-    
-    var tailArgs = [].slice.call(arguments,1);
+
+    var tailArgs = [].slice.call(arguments, 1);
     return new Stream(
         arguments[0],
         function () {
             return Stream.create.apply(null, tailArgs);
         }
-    );
+        );
 }
 
 /**
@@ -474,20 +486,20 @@ function fromArray(values) {
  *  
  *  returns {Stream} A finite stream with elements in the range [low, high]
  */
-function fromInterval(low, high){
-    if(!low){
+function fromInterval(low, high) {
+    if (!low) {
         low = 0;
     }
-    if (!high || low === high){
+    if (!high || low === high) {
         return new Stream(low, null);
     }
-    
+
     return new Stream(
         low,
         function () {
             return Stream.fromInterval(low + 1, high);
         }
-    );
+        );
 }
 
 /**
@@ -500,16 +512,16 @@ function fromInterval(low, high){
  *  returns {Stream} A infinite stream with elements starting from `start`
  */
 function from(start) {
-    if(!start){
+    if (!start) {
         start = 0;
     }
-    
+
     return new Stream(
         start,
         function () {
             return Stream.from(start + 1);
         }
-    );
+        );
 }
 
 /**
@@ -520,7 +532,7 @@ function from(start) {
  *  
  *  returns {Stream} A finite stream with elements in the range [0, stop]
  */
-function upTo(stop){
+function upTo(stop) {
     return Stream.fromInterval(0, stop);
 }
 
@@ -554,13 +566,14 @@ function NaturalNumbers() {
                 Stream.NaturalNumbers(),
                 Stream.Ones());
         }
-    );
+        );
 };
 
 //Instance methods
 Stream.prototype.head = head;
 Stream.prototype.tail = tail;
 Stream.prototype.isEmpty = isEmpty;
+Stream.prototype.hasEmptyTail = hasEmptyTail;
 Stream.prototype.append = append;
 Stream.prototype.pick = pick;
 Stream.prototype.elementAt = elementAt;

@@ -10,6 +10,7 @@ describe('Stream()', function () {
   it('head throws an exception for empty Streams', function () {
     var stream = new Stream();
     expect(stream.head).to.throw('Stream is empty!');
+    expect(stream.tail).to.throw('Stream is empty!');
   });
   
   it('tail throws an exception for empty Streams', function () {
