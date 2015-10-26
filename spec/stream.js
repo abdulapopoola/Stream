@@ -133,6 +133,21 @@ describe('Stream()', function () {
     expect(sum.elementAt(4)).to.deep.equal([25]);
   });
 
+  it('can append a new stream onto an existing stream', function () {
+    var s1 = Stream.fromArray([1,3,5]);
+    var s2 = Stream.fromArray([2,4,6]);
+    var concatenated = s1.append(s2);
+    expect(concatenated.length()).to.equal(6);
+    expect(concatenated.toArray()).to.deep.equal([1,3,5,2,4,6]);
+  });
+
+  it('can pick a new stream from an existing stream', function () {
+    var s1 = Stream.fromArray([1,3,5,7,9,11]);
+    var s2 = s1.pick(3);
+    expect(s2.length()).to.equal(3);
+    expect(s2.toArray()).to.deep.equal([1,3,5]);
+  });
+
   it('can find the length of a stream', function () {
     var s1 = Stream.fromArray([1,3,5]);
     var sum = s1.length();
@@ -178,6 +193,27 @@ describe('Stream()', function () {
     });
     expect(triples.toArray()).to.deep.equal([3,9,15]);
   }); 
+
+  it('can filter streams', function () {
+    var s1 = Stream.fromArray([1,2,3,4,5]);
+    var evenNumbers = s1.filter(function (element) {
+      return element % 2 === 0;
+    });
+    expect(evenNumbers.toArray()).to.deep.equal([2,4]);
+  }); 
+
+  it('can test for membership of a stream', function () {
+    var s1 = Stream.fromArray([1,2,3,4,5]);
+    expect(s1.contains(2)).to.equal(true);
+    expect(s1.contains(-2)).to.equal(false);
+  }); 
+
+  it('can remove elements from a stream', function () {
+    var s1 = Stream.fromArray([1,2,3,4,5]);
+    s1 = s1.remove(2);
+    expect(s1.length()).to.equal(3);
+    expect(s1.toArray()).to.deep.equal([3,4,5]);
+  }); 
   
   it('can convert a finite stream to an array', function () {
     var s1 = Stream.fromArray([1,3,5]);
@@ -185,5 +221,21 @@ describe('Stream()', function () {
       return 2 * element;
     });
     expect(doubled.toArray()).to.deep.equal([2,6,10]);
-  });
+  });   
+  
+  it('Ones return an infinite number of Ones', function () {
+    var s1 = Stream.Ones();
+    
+    var first5Elements = s1.pick(5);
+    expect(first5Elements.toArray()).to.deep.equal([1,1,1,1,1]);
+    
+    expect(s1.elementAt(1000)).to.equal(1);
+  });   
+  
+  it('NaturalNumbers returns the infinite stream of Natural Numbers', function () {
+    var s1 = Stream.NaturalNumbers();
+    
+    var first5Elements = s1.pick(5);
+    expect(first5Elements.toArray()).to.deep.equal([1,2,3,4,5]);
+  });  
 });

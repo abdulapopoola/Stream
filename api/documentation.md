@@ -88,6 +88,9 @@
 <dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Returns an infinite stream of ones</p>
 </dd>
+<dt><a href="#NaturalNumbers">NaturalNumbers()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dd><p>Returns the stream of Natural numbers</p>
+</dd>
 </dl>
 <a name="Stream"></a>
 ## Stream
@@ -419,8 +422,18 @@ Constructs a stream made up of consecutive numbers up to `stop`
 Returns an infinite stream of ones
 
 **Kind**: global function  
-**Returns**: <code>[Stream](#Stream)</code> - Value at nth index in stream  
+**Returns**: <code>[Stream](#Stream)</code> - An infinite stream of Ones  
 **Example**  
 ```js
 var ones = Stream.Ones();
+```
+<a name="NaturalNumbers"></a>
+## NaturalNumbers() ⇒ <code>[Stream](#Stream)</code>
+Returns the stream of Natural numbers
+
+**Kind**: global function  
+**Returns**: <code>[Stream](#Stream)</code> - The infinite stream of natural numbers  
+**Example**  
+```js
+var naturals = Stream.NaturalNumbers();
 ```

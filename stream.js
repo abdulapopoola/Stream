@@ -121,7 +121,11 @@ function elementAt(index) {
         if(s.isEmpty()) {
             return;
         }
-        s = s.tail();
+        try {
+            s = s.tail();
+        } catch (e){
+            return;
+        }
         index--;
     }
     
@@ -325,6 +329,7 @@ function remove(n) {
             return new Stream(null, null);
         }
         s = s.tail();
+        n--;
     }
     
     return new Stream(
@@ -395,13 +400,28 @@ function zip(/* arguments */) {
             continue;
         }
         zippedFirsts.push(s.head());
-        args[i] = s.tail(); //overwrite stream with tail
     }
 
+    //Find cleaner pattern
     return new Stream(
         zippedFirsts,
         function () {
-            return Stream.zip.apply(null, args);
+            var moved = [];
+            for(var i=0, len = args.length; i < len; i++){
+                var tmp = args[i];
+                var hasTail = true;
+                try {
+                    tmp = tmp.tail();
+                } catch (e) {
+                    hasTail = false;
+                } finally {
+                    if(hasTail) {
+                        moved.push(tmp);
+                    }
+                }
+            }
+            
+            return Stream.zip.apply(null, moved);
         }
     );
 }
@@ -508,13 +528,33 @@ function upTo(stop){
 *   Returns an infinite stream of ones   
 *
 *   @static
-*   @returns {Stream} Value at nth index in stream
+*   @returns {Stream} An infinite stream of Ones
 *   @example
 *
 *   var ones = Stream.Ones();
 **/
 function Ones() {
     return new Stream(1, Ones);
+};
+
+/**
+*   Returns the stream of Natural numbers  
+*
+*   @static
+*   @returns {Stream} The infinite stream of natural numbers
+*   @example
+*
+*   var naturals = Stream.NaturalNumbers();
+**/
+function NaturalNumbers() {
+    return new Stream(
+        1,
+        function () {
+            return Stream.add(
+                Stream.NaturalNumbers(),
+                Stream.Ones());
+        }
+    );
 };
 
 //Instance methods
@@ -544,3 +584,4 @@ Stream.fromInterval = fromInterval;
 Stream.from = from;
 Stream.upTo = upTo;
 Stream.Ones = Ones;
+Stream.NaturalNumbers = NaturalNumbers;
