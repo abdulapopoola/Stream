@@ -6,18 +6,18 @@
 ## Functions
 <dl>
 <dt><a href="#head">head()</a> ⇒ <code>*</code></dt>
-<dd><p>Returns the head of a stream</p>
+<dd><p>Returns the head of a Stream</p>
 </dd>
 <dt><a href="#tail">tail()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Returns the tail of a stream</p>
+<dd><p>Returns the tail of a Stream</p>
 </dd>
 <dt><a href="#isEmpty">isEmpty()</a> ⇒ <code>boolean</code></dt>
-<dd><p>Checks if a stream is empty</p>
+<dd><p>Checks if a Stream is empty</p>
 </dd>
 <dt><a href="#hasEmptyTail">hasEmptyTail()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks if the tail of a Stream is empty</p>
 </dd>
-<dt><a href="#append">append([s])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dt><a href="#append">append(s)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Appends a new stream to the end of this stream</p>
 </dd>
 <dt><a href="#pick">pick(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
@@ -25,7 +25,7 @@
   nth item or reaches the end of the stream</p>
 </dd>
 <dt><a href="#elementAt">elementAt(index)</a> ⇒ <code>*</code></dt>
-<dd><p>Picks the element at the nth index in a stream. Returns undefined 
+<dd><p>Picks the element at the nth index in a stream. Returns <code>undefined</code> 
   if stream size is less than the index. Indexing is zero-based</p>
 </dd>
 <dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
@@ -111,19 +111,19 @@ Creates the Stream object
 
 <a name="head"></a>
 ## head() ⇒ <code>\*</code>
-Returns the head of a stream
+Returns the head of a Stream
 
 **Kind**: global function  
 **Returns**: <code>\*</code> - The head of the stream  
 <a name="tail"></a>
 ## tail() ⇒ <code>[Stream](#Stream)</code>
-Returns the tail of a stream
+Returns the tail of a Stream
 
 **Kind**: global function  
 **Returns**: <code>[Stream](#Stream)</code> - The tail of the stream  
 <a name="isEmpty"></a>
 ## isEmpty() ⇒ <code>boolean</code>
-Checks if a stream is empty
+Checks if a Stream is empty
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - Returns `true` if the stream is empty  
@@ -144,7 +144,7 @@ s.hasEmptyTail();
   // => true
 ```
 <a name="append"></a>
-## append([s]) ⇒ <code>[Stream](#Stream)</code>
+## append(s) ⇒ <code>[Stream](#Stream)</code>
 Appends a new stream to the end of this stream
 
 **Kind**: global function  
@@ -152,7 +152,7 @@ Appends a new stream to the end of this stream
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [s] | <code>[Stream](#Stream)</code> | The stream to append to the end of this stream |
+| s | <code>[Stream](#Stream)</code> | The stream to append to the end of this stream |
 
 <a name="pick"></a>
 ## pick(n) ⇒ <code>[Stream](#Stream)</code>
@@ -172,7 +172,7 @@ integerStream.pick(3);
 ```
 <a name="elementAt"></a>
 ## elementAt(index) ⇒ <code>\*</code>
-Picks the element at the nth index in a stream. Returns undefined 
+Picks the element at the nth index in a stream. Returns `undefined` 
   if stream size is less than the index. Indexing is zero-based
 
 **Kind**: global function  
