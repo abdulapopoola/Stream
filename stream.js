@@ -18,7 +18,7 @@ function Stream(first, restGenerator) {
 }
 
 /**
-*   Returns the head of a stream
+*   Returns the head of a Stream
 *
 *   @returns {*} The head of the stream
 **/
@@ -31,7 +31,7 @@ function head() {
 }
 
 /**
-*   Returns the tail of a stream
+*   Returns the tail of a Stream
 *
 *   @returns {Stream} The tail of the stream
 **/
@@ -44,7 +44,7 @@ function tail() {
 }
 
 /**
-*   Checks if a stream is empty   
+*   Checks if a Stream is empty   
 *
 *   @returns {boolean} Returns `true` if the stream is empty
 *   @example
@@ -83,7 +83,7 @@ function hasEmptyTail(stream) {
 /**
  *  Appends a new stream to the end of this stream
  * 
- *  @param {Stream} [s] - The stream to append to the end of this stream
+ *  @param {Stream} s - The stream to append to the end of this stream
  *  @returns {Stream} A new stream with s appended to the current stream
  */
 function append(s) {
@@ -96,8 +96,7 @@ function append(s) {
         this.head(),
         function () {
             return that.tail().append(s);
-        }
-        );
+        });
 }
 
 /**
@@ -125,7 +124,7 @@ function pick(n) {
 }
 
 /**
-*   Picks the element at the nth index in a stream. Returns undefined 
+*   Picks the element at the nth index in a stream. Returns `undefined` 
 *   if stream size is less than the index. Indexing is zero-based
 *
 *   @param {Number} index - The zero-based index of the stream element to be picked
