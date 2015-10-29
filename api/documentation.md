@@ -82,11 +82,11 @@
 <dd><p>Constructs a stream made up of consecutive numbers in the
  range [low high]</p>
 </dd>
-<dt><a href="#from">from([start])</a></dt>
+<dt><a href="#from">from(start)</a></dt>
 <dd><p>Constructs an infinite stream of consecutive numbers starting 
  from integer <code>start</code></p>
 </dd>
-<dt><a href="#upTo">upTo([stop])</a></dt>
+<dt><a href="#upTo">upTo(stop)</a></dt>
 <dd><p>Constructs a stream made up of consecutive numbers up to <code>stop</code></p>
 </dd>
 <dt><a href="#Ones">Ones()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
@@ -244,7 +244,6 @@ Maps a function over all the elements of a stream.
 **Example**  
 ```js
 Stream.map(integerStream, function (n) { return n*2; });
-  // => true
 ```
 <a name="filter"></a>
 ## filter(fn) ⇒ <code>[Stream](#Stream)</code>
@@ -413,7 +412,7 @@ Constructs a stream made up of consecutive numbers in the
 | high | <code>\*</code> |  | The upper limit value of the stream    returns {Stream} A finite stream with elements in the range [low, high] |
 
 <a name="from"></a>
-## from([start])
+## from(start)
 Constructs an infinite stream of consecutive numbers starting 
  from integer `start`
 
@@ -421,17 +420,17 @@ Constructs an infinite stream of consecutive numbers starting
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [start] | <code>Number</code> | <code>0</code> | The integer to start the stream from    returns {Stream} A infinite stream with elements starting from `start` |
+| start | <code>Number</code> | <code>0</code> | The integer to start the stream from    returns {Stream} A infinite stream with elements starting from `start` |
 
 <a name="upTo"></a>
-## upTo([stop])
+## upTo(stop)
 Constructs a stream made up of consecutive numbers up to `stop`
 
 **Kind**: global function  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [stop] | <code>Number</code> | The maximum and last value of the stream    returns {Stream} A finite stream with elements in the range [0, stop] |
+| stop | <code>Number</code> | The maximum and last value of the stream    returns {Stream} A finite stream with elements in the range [0, stop] |
 
 <a name="Ones"></a>
 ## Ones() ⇒ <code>[Stream](#Stream)</code>

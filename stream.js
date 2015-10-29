@@ -225,7 +225,6 @@ function sum() {
 *   @example
 *
 *   Stream.map(integerStream, function (n) { return n*2; });
-*   // => true
 **/
 function map(fn) {
     if (fn == null) {
@@ -507,7 +506,7 @@ function fromInterval(low, high) {
  *  from integer `start`
  *  
  *  @static
- *  @param {Number} [start=0] - The integer to start the stream from
+ *  @param {Number} start=0 - The integer to start the stream from
  *  
  *  returns {Stream} A infinite stream with elements starting from `start`
  */
@@ -528,7 +527,7 @@ function from(start) {
  *  Constructs a stream made up of consecutive numbers up to `stop`
  *  
  *  @static
- *  @param {Number} [stop] - The maximum and last value of the stream
+ *  @param {Number} stop - The maximum and last value of the stream
  *  
  *  returns {Stream} A finite stream with elements in the range [0, stop]
  */
