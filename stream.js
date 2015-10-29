@@ -314,8 +314,8 @@ function walk(fn) {
 }
 
 /**
-*   Prints out the first n elements of a stream, will stop if stream length is less
-*   than n 
+*   Prints out the first `n` elements of a stream, will stop if stream length is less
+*   than `n` 
 *
 *   @param {Number} n - Number of elements to print
 *   @example
@@ -331,7 +331,8 @@ function print(n) {
 }
 
 /**
-*   Removes the first n elements of a stream.
+*   Removes the first `n` elements of a stream. Returns an empty stream
+*   if `n` is greater than the stream's length.
 *
 *   @param {Number} n - The number of elements to be removed
 *   @returns {Stream} The new stream with elements starting an
@@ -397,7 +398,7 @@ function add(s1, s2) {
 }
 
 /**
-*   Zips all input streams together. Works like Python's
+*   Zips all elements of the input streams together. Works like Python's
 *   zip but returns arrays of arrays instead of a list of tuples
 *   The nth entry of a zipped stream is an an array consisting of
 *   all the nth elements of its constituent streams.
@@ -465,7 +466,7 @@ function create( /* arguments */) {
 *   Creates an input stream from an array
 *
 *   @static
-*   @param {Array} [values] - array to use in creating the stream
+*   @param {Array} values - array to use in creating the stream
 *   @returns {Stream} A new stream containing the array elements
 *   @example
 *
@@ -480,7 +481,7 @@ function fromArray(values) {
  *  range [low high]
  *  
  *  @static
- *  @param {*} [low=0] - The lower limit value of the stream
+ *  @param {*} low=0 - The lower limit value of the stream
  *  @param {*} high - The upper limit value of the stream
  *  
  *  returns {Stream} A finite stream with elements in the range [low, high]

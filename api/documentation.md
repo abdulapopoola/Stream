@@ -52,11 +52,12 @@
   Stream has to be finite for this to work.</p>
 </dd>
 <dt><a href="#print">print(n)</a></dt>
-<dd><p>Prints out the first n elements of a stream, will stop if stream length is less
-  than n</p>
+<dd><p>Prints out the first <code>n</code> elements of a stream, will stop if stream length is less
+  than <code>n</code></p>
 </dd>
 <dt><a href="#remove">remove(n)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Removes the first n elements of a stream.</p>
+<dd><p>Removes the first <code>n</code> elements of a stream. Returns an empty stream
+  if <code>n</code> is greater than the stream&#39;s length.</p>
 </dd>
 <dt><a href="#toArray">toArray()</a></dt>
 <dd><p>Constructs an array containing the elements of a finite stream</p>
@@ -66,7 +67,7 @@
 <dd><p>Adds two streams</p>
 </dd>
 <dt><a href="#zip">zip([...streams])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Zips all input streams together. Works like Python&#39;s
+<dd><p>Zips all elements of the input streams together. Works like Python&#39;s
   zip but returns arrays of arrays instead of a list of tuples
   The nth entry of a zipped stream is an an array consisting of
   all the nth elements of its constituent streams.</p>
@@ -74,10 +75,10 @@
 <dt><a href="#create">create([...values])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Creates an input stream using a list of arguments</p>
 </dd>
-<dt><a href="#fromArray">fromArray([values])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
+<dt><a href="#fromArray">fromArray(values)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Creates an input stream from an array</p>
 </dd>
-<dt><a href="#fromInterval">fromInterval([low], high)</a></dt>
+<dt><a href="#fromInterval">fromInterval(low, high)</a></dt>
 <dd><p>Constructs a stream made up of consecutive numbers in the
  range [low high]</p>
 </dd>
@@ -297,8 +298,8 @@ s.walk(function(element) {
 ```
 <a name="print"></a>
 ## print(n)
-Prints out the first n elements of a stream, will stop if stream length is less
-  than n
+Prints out the first `n` elements of a stream, will stop if stream length is less
+  than `n`
 
 **Kind**: global function  
 
@@ -312,7 +313,8 @@ s.print(5);
 ```
 <a name="remove"></a>
 ## remove(n) ⇒ <code>[Stream](#Stream)</code>
-Removes the first n elements of a stream.
+Removes the first `n` elements of a stream. Returns an empty stream
+  if `n` is greater than the stream's length.
 
 **Kind**: global function  
 **Returns**: <code>[Stream](#Stream)</code> - The new stream with elements starting an
@@ -352,7 +354,7 @@ Stream.add(s1 s2);
 ```
 <a name="zip"></a>
 ## zip([...streams]) ⇒ <code>[Stream](#Stream)</code>
-Zips all input streams together. Works like Python's
+Zips all elements of the input streams together. Works like Python's
   zip but returns arrays of arrays instead of a list of tuples
   The nth entry of a zipped stream is an an array consisting of
   all the nth elements of its constituent streams.
@@ -384,7 +386,7 @@ Creates an input stream using a list of arguments
 var s = Stream.create(1,2,3,4);
 ```
 <a name="fromArray"></a>
-## fromArray([values]) ⇒ <code>[Stream](#Stream)</code>
+## fromArray(values) ⇒ <code>[Stream](#Stream)</code>
 Creates an input stream from an array
 
 **Kind**: global function  
@@ -392,14 +394,14 @@ Creates an input stream from an array
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [values] | <code>Array</code> | array to use in creating the stream |
+| values | <code>Array</code> | array to use in creating the stream |
 
 **Example**  
 ```js
 var s = Stream.fromArray([1,2,3,4]);
 ```
 <a name="fromInterval"></a>
-## fromInterval([low], high)
+## fromInterval(low, high)
 Constructs a stream made up of consecutive numbers in the
  range [low high]
 
@@ -407,7 +409,7 @@ Constructs a stream made up of consecutive numbers in the
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [low] | <code>\*</code> | <code>0</code> | The lower limit value of the stream |
+| low | <code>\*</code> | <code>0</code> | The lower limit value of the stream |
 | high | <code>\*</code> |  | The upper limit value of the stream    returns {Stream} A finite stream with elements in the range [low, high] |
 
 <a name="from"></a>
