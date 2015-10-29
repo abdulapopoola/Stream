@@ -125,7 +125,7 @@ function pick(n) {
 
 /**
 *   Picks the element at the nth index in a stream. Returns `undefined` 
-*   if stream size is less than the index. Indexing is zero-based
+*   if stream size is less than the index. Indexing is zero-based.
 *
 *   @param {Number} index - The zero-based index of the stream element to be picked
 *   @returns {*} Value at nth index in stream
@@ -173,8 +173,8 @@ function length() {
 }
 
 /**
-*   Reduces the stream to a value which is the accumulated output obtained over
-*   each stream element. Only valid for finite streams
+*   Reduces the stream to an accumulated value obtained over
+*   each stream element. Only valid for finite streams.
 *
 *   @param {Function} fn - Function to execute on each argument, 
 *   taking the accumlatedValue so far and the current stream value
@@ -201,7 +201,7 @@ function reduce(fn, initialValue) {
 }
 
 /**
-*   Calculates the sum of the elements of a stream
+*   Calculates the sum of the elements of a stream.
 *
 *   @returns {Number} The sum of the elements of the stream
 *   @example
@@ -216,7 +216,7 @@ function sum() {
 }
 
 /**
-*   Maps a function to all the elements of a stream   
+*   Maps a function over all the elements of a stream.   
 *
 *   @static
 *   @param {Stream} stream - Stream to map function to
@@ -242,7 +242,7 @@ function map(fn) {
 }
 
 /**
-*   Filters unwanted elements out of a stream   
+*   Filters a stream. 
 *
 *   @param {Function} fn - Filter function
 *   @returns {Stream} Filtered stream

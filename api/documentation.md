@@ -26,23 +26,23 @@
 </dd>
 <dt><a href="#elementAt">elementAt(index)</a> ⇒ <code>*</code></dt>
 <dd><p>Picks the element at the nth index in a stream. Returns <code>undefined</code> 
-  if stream size is less than the index. Indexing is zero-based</p>
+  if stream size is less than the index. Indexing is zero-based.</p>
 </dd>
 <dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
 <dd><p>Gets the length of a stream - only defined for finite streams</p>
 </dd>
 <dt><a href="#reduce">reduce(fn, initialValue)</a> ⇒ <code>*</code></dt>
-<dd><p>Reduces the stream to a value which is the accumulated output obtained over
-  each stream element. Only valid for finite streams</p>
+<dd><p>Reduces the stream to an accumulated value obtained over
+  each stream element. Only valid for finite streams.</p>
 </dd>
 <dt><a href="#sum">sum()</a> ⇒ <code>Number</code></dt>
-<dd><p>Calculates the sum of the elements of a stream</p>
+<dd><p>Calculates the sum of the elements of a stream.</p>
 </dd>
 <dt><a href="#map">map(stream, fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Maps a function to all the elements of a stream</p>
+<dd><p>Maps a function over all the elements of a stream.</p>
 </dd>
 <dt><a href="#filter">filter(fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
-<dd><p>Filters unwanted elements out of a stream</p>
+<dd><p>Filters a stream.</p>
 </dd>
 <dt><a href="#contains">contains(index)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if the stream contains an element. Only defined for a finite stream</p>
@@ -173,7 +173,7 @@ integerStream.pick(3);
 <a name="elementAt"></a>
 ## elementAt(index) ⇒ <code>\*</code>
 Picks the element at the nth index in a stream. Returns `undefined` 
-  if stream size is less than the index. Indexing is zero-based
+  if stream size is less than the index. Indexing is zero-based.
 
 **Kind**: global function  
 **Returns**: <code>\*</code> - Value at nth index in stream  
@@ -200,8 +200,8 @@ stream.length()
 ```
 <a name="reduce"></a>
 ## reduce(fn, initialValue) ⇒ <code>\*</code>
-Reduces the stream to a value which is the accumulated output obtained over
-  each stream element. Only valid for finite streams
+Reduces the stream to an accumulated value obtained over
+  each stream element. Only valid for finite streams.
 
 **Kind**: global function  
 **Returns**: <code>\*</code> - The accumulated output  
@@ -219,7 +219,7 @@ var sum = stream.reduce(function (sum, n) {
 ```
 <a name="sum"></a>
 ## sum() ⇒ <code>Number</code>
-Calculates the sum of the elements of a stream
+Calculates the sum of the elements of a stream.
 
 **Kind**: global function  
 **Returns**: <code>Number</code> - The sum of the elements of the stream  
@@ -230,7 +230,7 @@ stream.sum()
 ```
 <a name="map"></a>
 ## map(stream, fn) ⇒ <code>[Stream](#Stream)</code>
-Maps a function to all the elements of a stream
+Maps a function over all the elements of a stream.
 
 **Kind**: global function  
 **Returns**: <code>[Stream](#Stream)</code> - Returns a new Stream with the input function applied to entries  
@@ -247,7 +247,7 @@ Stream.map(integerStream, function (n) { return n*2; });
 ```
 <a name="filter"></a>
 ## filter(fn) ⇒ <code>[Stream](#Stream)</code>
-Filters unwanted elements out of a stream
+Filters a stream.
 
 **Kind**: global function  
 **Returns**: <code>[Stream](#Stream)</code> - Filtered stream  
