@@ -18,7 +18,7 @@ function Stream(first, restGenerator) {
 }
 
 /**
-*   Returns the 'head' - first value - of a stream
+*   Returns the head of a stream
 *
 *   @returns {*} The head of the stream
 **/

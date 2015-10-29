@@ -6,13 +6,16 @@
 ## Functions
 <dl>
 <dt><a href="#head">head()</a> ⇒ <code>*</code></dt>
-<dd><p>Returns the &#39;head&#39; - first value - of a stream</p>
+<dd><p>Returns the head of a stream</p>
 </dd>
 <dt><a href="#tail">tail()</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Returns the tail of a stream</p>
 </dd>
 <dt><a href="#isEmpty">isEmpty()</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks if a stream is empty</p>
+</dd>
+<dt><a href="#hasEmptyTail">hasEmptyTail()</a> ⇒ <code>boolean</code></dt>
+<dd><p>Checks if the tail of a Stream is empty</p>
 </dd>
 <dt><a href="#append">append([s])</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Appends a new stream to the end of this stream</p>
@@ -108,7 +111,7 @@ Creates the Stream object
 
 <a name="head"></a>
 ## head() ⇒ <code>\*</code>
-Returns the 'head' - first value - of a stream
+Returns the head of a stream
 
 **Kind**: global function  
 **Returns**: <code>\*</code> - The head of the stream  
@@ -127,6 +130,17 @@ Checks if a stream is empty
 **Example**  
 ```js
 s.isEmpty();
+  // => true
+```
+<a name="hasEmptyTail"></a>
+## hasEmptyTail() ⇒ <code>boolean</code>
+Checks if the tail of a Stream is empty
+
+**Kind**: global function  
+**Returns**: <code>boolean</code> - Returns `true` if the tail is empty  
+**Example**  
+```js
+s.hasEmptyTail();
   // => true
 ```
 <a name="append"></a>
