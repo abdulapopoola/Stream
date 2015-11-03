@@ -119,8 +119,7 @@ function pick(n) {
         this.head(),
         function () {
             return that.tail().pick(n - 1);
-        }
-        );
+        });
 }
 
 /**
@@ -236,8 +235,7 @@ function map(fn) {
         fn(this.head()),
         function () {
             return that.tail().map(fn);
-        }
-        );
+        });
 }
 
 /**
@@ -355,8 +353,7 @@ function remove(n) {
         s.head(),
         function () {
             return s.tail()
-        }
-        );
+        });
 }
 
 /**
@@ -433,8 +430,7 @@ function zip(/* arguments */) {
             }
 
             return Stream.zip.apply(null, tails);
-        }
-        );
+        });
 }
 
 /**
@@ -457,8 +453,7 @@ function create( /* arguments */) {
         arguments[0],
         function () {
             return Stream.create.apply(null, tailArgs);
-        }
-        );
+        });
 }
 
 /**
@@ -497,8 +492,7 @@ function fromInterval(low, high) {
         low,
         function () {
             return Stream.fromInterval(low + 1, high);
-        }
-        );
+        });
 }
 
 /**
@@ -519,8 +513,7 @@ function from(start) {
         start,
         function () {
             return Stream.from(start + 1);
-        }
-        );
+        });
 }
 
 /**
@@ -564,8 +557,7 @@ function NaturalNumbers() {
             return Stream.add(
                 Stream.NaturalNumbers(),
                 Stream.Ones());
-        }
-        );
+        });
 };
 
 //Instance methods
