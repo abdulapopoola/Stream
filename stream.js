@@ -123,7 +123,7 @@ function pick(n) {
 }
 
 /**
-*   Picks the element at the nth index in a stream. Returns `undefined` 
+*   Returns the element at the nth index in a stream. Returns `undefined` 
 *   if stream size is less than the index. Indexing is zero-based.
 *
 *   @param {Number} index - The zero-based index of the stream element to be picked
