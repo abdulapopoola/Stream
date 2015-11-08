@@ -11,7 +11,8 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-jsdoc-ng": "0.0.3",
-    "grunt-jsdoc-to-markdown": "^1.1.1"
+    "grunt-jsdoc-to-markdown": "^1.1.1",
+    "grunt-mocha-phantomjs": "^2.0.0"
   },
   "description": "Implementation of the functional programming streams concept in JS.",
   "main": "gruntfile.js",

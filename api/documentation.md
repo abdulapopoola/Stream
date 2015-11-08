@@ -61,7 +61,7 @@
 </dd>
 <dt><a href="#toArray">toArray()</a></dt>
 <dd><p>Constructs an array containing the elements of a finite stream</p>
-<p> returns {Array} An array containing the elements of the stream</p>
+<p> returns {Array} A array containing the elements of the stream</p>
 </dd>
 <dt><a href="#add">add(s1, s2)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Adds two streams</p>
@@ -332,7 +332,7 @@ integerStream.remove(3);
 ## toArray()
 Constructs an array containing the elements of a finite stream
  
- returns {Array} An array containing the elements of the stream
+ returns {Array} A array containing the elements of the stream
 
 **Kind**: global function  
 <a name="add"></a>
