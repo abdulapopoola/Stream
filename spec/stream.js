@@ -1,4 +1,4 @@
-/* global stream, describe, it, expect, should */
+/* global Stream, describe, it, expect */
 
 describe('Stream()', function () {
   'use strict';

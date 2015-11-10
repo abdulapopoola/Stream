@@ -25,7 +25,7 @@
   nth item or reaches the end of the stream</p>
 </dd>
 <dt><a href="#elementAt">elementAt(index)</a> ⇒ <code>*</code></dt>
-<dd><p>Picks the element at the nth index in a stream. Returns <code>undefined</code> 
+<dd><p>Returns the element at the nth index in a stream. Returns <code>undefined</code> 
   if stream size is less than the index. Indexing is zero-based.</p>
 </dd>
 <dt><a href="#length">length()</a> ⇒ <code>Number</code></dt>
@@ -173,7 +173,7 @@ integerStream.pick(3);
 ```
 <a name="elementAt"></a>
 ## elementAt(index) ⇒ <code>\*</code>
-Picks the element at the nth index in a stream. Returns `undefined` 
+Returns the element at the nth index in a stream. Returns `undefined` 
   if stream size is less than the index. Indexing is zero-based.
 
 **Kind**: global function  
