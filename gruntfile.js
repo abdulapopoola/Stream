@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                 browser: true,
                 devel: true
             },
-            all: ['stream.js']
+            all: ['stream.js', 'spec/*.js']
         }
     });
 
