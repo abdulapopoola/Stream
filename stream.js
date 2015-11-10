@@ -52,7 +52,7 @@ function tail() {
 *   s.isEmpty();
 *   // => true
 **/
-function isEmpty(stream) {
+function isEmpty() {
     return this.streamFirst == null;
 }
 
@@ -65,7 +65,7 @@ function isEmpty(stream) {
 *   s.hasEmptyTail();
 *   // => true
 **/
-function hasEmptyTail(stream) {
+function hasEmptyTail() {
     if (this.streamRest == null) {
         return true;
     }
@@ -352,7 +352,7 @@ function remove(n) {
     return new Stream(
         s.head(),
         function () {
-            return s.tail()
+            return s.tail();
         });
 }
 
@@ -366,7 +366,7 @@ function toArray() {
 
     var storer = function (val) {
         items.push(val);
-    }
+    };
 
     this.walk(storer);
     return items;
@@ -539,7 +539,7 @@ function upTo(stop) {
 **/
 function Ones() {
     return new Stream(1, Ones);
-};
+}
 
 /**
 *   Returns the stream of Natural numbers  
@@ -558,7 +558,7 @@ function NaturalNumbers() {
                 Stream.NaturalNumbers(),
                 Stream.Ones());
         });
-};
+}
 
 //Instance methods
 Stream.prototype.head = head;

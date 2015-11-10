@@ -33,14 +33,30 @@ module.exports = function (grunt) {
                     'stream.min.js': ['stream.js']
                 }
             }
+        },
+        jshint: {
+            options: {
+                unused:true,
+                undef: true,
+                nonew: true,
+                nonbsp: true,
+                latedef: true,
+                forin: true,
+                eqnull: true,
+                browser: true,
+                devel: true
+            },
+            all: ['stream.js']
         }
     });
 
     grunt.loadNpmTasks('grunt-jsdoc-to-markdown');
     grunt.loadNpmTasks('grunt-mocha-phantomjs');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('default', 'mocha_phantomjs');
     grunt.registerTask('jsdoc2md', 'jsdoc2md');
     grunt.registerTask('min', 'uglify');
+    grunt.registerTask('lint', 'jshint');
 };
