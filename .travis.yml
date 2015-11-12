@@ -3,3 +3,5 @@ before_script:
     - npm install -g grunt-cli
     - npm install -g grunt
     - npm install -g grunt-mocha-phantomjs
+    - npm install -g mocha
+    - npm install -g chai
