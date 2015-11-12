@@ -6,7 +6,7 @@
     "chai": "~1.8.0"
   },
   "scripts": {
-    "test": "mocha ./spec/stream.js"
+    "test": "grunt test"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
