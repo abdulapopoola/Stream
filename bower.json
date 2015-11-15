@@ -1,9 +1,29 @@
 {
   "name": "stream",
-  "private": true,
   "dependencies": {
-      "chai": "~3.4.1",
-      "mocha": "~1.14.0"
+    "chai": "~3.4.1",
+    "mocha": "~1.14.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "stream.js",
+  "homepage": "https://github.com/abdulapopoola/Stream",
+  "authors": [
+    "AbdulFattah Popoola <abdulapopoola@yahoo.com>"
+  ],
+  "description": "Implementation of the functional programming streams concept in JS.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Streams"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.3.0"
 }
