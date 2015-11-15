@@ -11,9 +11,7 @@
     "AbdulFattah Popoola <abdulapopoola@yahoo.com>"
   ],
   "description": "Implementation of the functional programming streams concept in JS.",
-  "moduleType": [
-    "globals"
-  ],
+  "moduleType": [],
   "keywords": [
     "Streams"
   ],
