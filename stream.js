@@ -268,7 +268,7 @@ function filter(fn) {
 /**
 *   Check if the stream contains an element. Only defined for a finite stream   
 *
-*   @param {*} index - The index of the stream element to be picked
+*   @param {*} element - The element to be searched for
 *   @returns {Boolean} Returns `true` if the stream contains the element
 *   @example
 *
