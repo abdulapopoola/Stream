@@ -266,7 +266,7 @@ function filter(fn) {
 }
 
 /**
-*   Check if the stream contains an element. Only defined for a finite stream   
+*   Check if the stream contains `element`. Only defined for a finite stream   
 *
 *   @param {*} element - The element to be searched for
 *   @returns {Boolean} Returns `true` if the stream contains the element
@@ -359,7 +359,7 @@ function remove(n) {
 /**
  *  Constructs an array containing the elements of a finite stream
  *  
- *  returns {Array} A array containing the elements of the stream
+ *  @returns {Array} A array containing the elements of the stream
  */
 function toArray() {
     var items = [];
