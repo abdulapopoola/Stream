@@ -3,130 +3,156 @@
 <!--[if IE 7]><html class="ie9 ie8 ie7" lang="en"><![endif]-->
 <!--[if IE 8]><html class="ie9 ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
-<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
 <html>
+
 <head>
-  <title>BaseDemo - {{project-name}}</title>
+	<title>StreamJS - JavaScript library for using Streams</title>
 
 	<link rel="stylesheet" href="bd.styles.css">
-	
+
 	<!-- CSS Test Zone -->
 	<style></style>
-	
+
 	<!-- JavaScript Test Zone -->
 	<script></script>
-	
+
 </head>
+
 <body>
 
 	<div class="wrapper">
 		<div class="page">
-		
+
 			<nav class="nav">
 				<ul>
-					<li><a href="http://sebnitu.com">About the Author</a></li>
-					<li><a href="https://github.com/sebnitu/BaseDemo">Documentation</a></li>
-					<li class="download"><a href="https://github.com/sebnitu/BaseDemo/zipball/master"><img src="bd.download.png" alt=""> Download <span class="version">v1.0</span></a></li>
+					<li><a href="http://abdulapopoola.com">About the Author</a></li>
+					<li><a href="https://github.com/abdulapopoola">Documentation</a></li>
+					<li class="download">
+						<a href="https://github.com/abdulapopoola/Stream/archive/master.zip"><img src="bd.download.png" alt=""> Download <span class="version">v1.0</span></a>
+					</li>
 				</ul>
 			</nav>
-		
+
 			<header class="header">
-				<h1>BaseDemo <span class="version">v1.0</span></h1>
-				<p>BaseDemo is just a basic template that can be used for creating demos for your development projects. It also works great for <a href="http://pages.github.com/">GitHub Pages</a>. This is an example of what you could do with this template and some content types.<p>
+				<h1>StreamJS <span class="version">v1.0</span></h1>
+				<p>StreamJS is small library that provides the power of streams for your computational needs.</p>
 				<div class="custom-nav"></div>
 			</header>
-			
-			<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
-			
+
+			<div class="sep">
+				<span class="left-arrow arrow"></span>
+				<span class="right-arrow arrow"></span>
+			</div>
+
+			<header class="header">
+				<h1>Introduction</h1>
+				<p>StreamJS is small library that provides the power of streams for your computational needs.</p>
+				<div class="custom-nav">
+					Streams are just like the ubiquitous lists and arrays; you can use streams for everything you use Arrays and Lists for but
+					the reverse scenario is not true. Why? Because Streams simultaneously bundle/combine data and computation while Lists/Arrays
+					only hold data.
+				</div>
+			</header>
+
+			<div class="sep">
+				<span class="left-arrow arrow"></span>
+				<span class="right-arrow arrow"></span>
+			</div>
+
 			<div class="demo" id="demo-one">
 				<div class="description">
-					<h2>Example One</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non nibh consectetur elementum.</p>
-				</div><!-- .description -->
+					<h2>Creating Streams</h2>
+					<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non
+						nibh consectetur elementum.</p>
+				</div>
+				<!-- .description -->
 
 				<nav class="subnav tabs">
 					<ul>
-						<li class="active"><a href="#panel-1">Demo</a></li>
-						<li><a href="#panel-2">JavaScript</a></li>
-						<li><a href="#panel-3">HTML</a></li>
-						<li><a href="#panel-4">CSS</a></li>
+						<li class="active"><a href="#panel-1">Constructors</a></li>
 					</ul>
 				</nav>
 				<div class="panels">
 					<div class="panel" id="panel-1">
-						<pre>This is where your output or results would go.</pre>
-					</div><!-- .panel -->
+						<pre>var stream = Stream.create(1,2,3);
+ 
+var streamFromArray = Stream.fromArray([1,2,3]);</pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
+						<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
 
-					<div class="panel" id="panel-2">
-						<pre>JavaScript code would go here.</pre>
-					</div><!-- .panel -->
-
-					<div class="panel" id="panel-3">
-						<pre>Mmmm, nothing like some solid HTML.</pre>
-					</div><!-- .panel -->
-
-					<div class="panel" id="panel-4">
-						<pre>CSS is nice too!</pre>
-					</div><!-- .panel -->
-
-				</div><!-- .panels -->
-
-			</div><!-- .demo -->
-			
-			<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
-			
-			<div class="options">
+			<div class="demo" id="demo-one">
 				<div class="description">
-					<h2>Available Options</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non nibh consectetur elementum.</p>
-				</div><!-- .description -->
-				
-				<div class="table-wrap">
-					<table width="100%" class="options-table" cellpadding="0" cellspacing="0">
-						<thead>
-							<tr>
-								<th width="20%">Key</th>
-								<th width="18%">Default value</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Key</td>
-								<td>Value</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet.</td>
-							</tr>
-							<tr>
-								<td>Key</td>
-								<td>Value</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet.</td>
-							</tr>
-							<tr>
-								<td>Key</td>
-								<td>Value</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet.</td>
-							</tr>
-							<tr>
-								<td>Key</td>
-								<td>Value</td>
-								<td>Toggle auto rotate.</td>
-							</tr>
-							<tr>
-								<td>Key</td>
-								<td>Value</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet.</td>
-							</tr>
-						</tbody>
-					</table>
-				</div><!-- .table-wrap -->
-			</div><!-- .options -->
-			
+					<h2>Using Streams</h2>
+					<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non
+						nibh consectetur elementum.</p>
+				</div>
+				<!-- .description -->
+
+				<nav class="subnav tabs">
+					<ul>
+						<li class="active"><a href="#panel-1">Even Numbers</a></li>
+					</ul>
+				</nav>
+				<div class="panels">
+					<div class="panel" id="panel-1">
+						<pre>var evenNaturals = NaturalNumbers.filter(function(val) {
+    return val % 2 === 0;
+});
+ 
+var oddNaturals = NaturalNumbers.filter(function(val) {
+    return val % 2 === 1;
+});</pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
+
+			<div class="demo" id="demo-one">
+				<div class="description">
+					<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non
+						nibh consectetur elementum.</p>
+				</div>
+				<!-- .description -->
+
+				<nav class="subnav tabs">
+					<ul>
+						<li class="active"><a href="#panel-1">Stream Operations</a></li>
+					</ul>
+				</nav>
+				<div class="panels">
+					<div class="panel" id="panel-1">
+						<pre>var s = Stream.create(1,2,3);
+var sum = s.reduce(function(a, b) {
+    return a + b;
+});
+console.log(sum);
+//6</pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
+
+			<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+
 			<div class="options">
 				<div class="description">
 					<h2>Methods</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam fermentum sapien non nibh consectetur elementum.</p>
-				</div><!-- .description -->
-				
+					<p>Full documentation is available <a href="https://github.com/abdulapopoola/Stream/blob/master/api/documentation.md">here</a>.</p>
+				</div>
+				<!-- .description -->
+
 				<div class="table-wrap">
 					<table width="100%" class="options-table" cellpadding="0" cellspacing="0">
 						<thead>
@@ -137,29 +163,149 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>someMethodHere()</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque risus id eros semper non eleifend lorem imperdiet.</td>
+								<td>head()</td>
+								<td>Returns the head of a Stream.</td>
+							</tr>
+							<tr>
+								<td>tail()</td>
+								<td>Returns the tail of a Stream.</td>
+							</tr>
+							<tr>
+								<td>isEmpty()</td>
+								<td>Checks if a Stream is empty.</td>
+							</tr>
+							<tr>
+								<td>hasEmptyTail()</td>
+								<td>Checks if the tail of a Stream is empty.</td>
+							</tr>
+							<tr>
+								<td>append(s)</td>
+								<td>Appends the stream <i>s</i> to the end of this stream.</td>
+							</tr>
+							<tr>
+								<td>pick(n)</td>
+								<td>Picks the first <i>n</i> elements out of a stream, terminates when it gets to the nth item or reaches the end of
+									the stream.</td>
+							</tr>
+							<tr>
+								<td>elementAt(index)</td>
+								<td>Returns the element at <i>index</i> in a stream. Returns undefined if stream size is less than the index. Indexing
+									is zero-based.</td>
+							</tr>
+							<tr>
+								<td>length()</td>
+								<td>Gets the length of a stream - only defined for finite streams.</td>
+							</tr>
+							<tr>
+								<td>reduce(fn, initialValue)</td>
+								<td>Reduces the stream to an accumulated value obtained over each stream element. Only valid for finite streams..</td>
+							</tr>
+							<tr>
+								<td>sum()</td>
+								<td>Calculates the sum of the elements of a stream.</td>
+							</tr>
+							<tr>
+								<td>map(stream, fn)</td>
+								<td>Maps a function over all the elements of a stream.</td>
+							</tr>
+							<tr>
+								<td>filter(fn)</td>
+								<td>Filters a stream.</td>
+							</tr>
+							<tr>
+								<td>contains(element)</td>
+								<td>Check if the stream contains <i>element</i>. Only defined for a finite stream.</td>
+							</tr>
+							<tr>
+								<td>walk(fn)</td>
+								<td>Walks a stream and applies the input function to the stream. Stream has to be finite for this to work.</td>
+							</tr>
+							<tr>
+								<td>print(n)</td>
+								<td>Prints out the first <i>n</i> elements of a stream, will stop if stream length is less than <i>n</i>.</td>
+							</tr>
+							<tr>
+								<td>remove(n)</td>
+								<td>Removes the first <i>n</i> elements of a stream. Returns an empty stream if <i>n</i> is greater than the stream's
+									length.
+								</td>
+							</tr>
+							<tr>
+								<td>toArray()</td>
+								<td>Constructs an array containing the elements of a finite stream.</td>
+							</tr>
+							<tr>
+								<td>add(s1, s2)</td>
+								<td>Adds stream <i>s1</i> to stream <i>s2</i>.</td>
+							</tr>
+							<tr>
+								<td>zip([...streams])</td>
+								<td>Zips all elements of the input streams together. Works like Python's zip but returns arrays of arrays instead of
+									a list of tuples The nth entry of a zipped stream is an an array consisting of all the nth elements of its constituent
+									streams.
+								</td>
+							</tr>
+							<tr>
+								<td>create([...values])</td>
+								<td>Creates an input stream using a list of arguments.</td>
+							</tr>
+							<tr>
+								<td>fromArray(values)</td>
+								<td>Creates an input stream from an array.</td>
+							</tr>
+							<tr>
+								<td>fromInterval(low, high)()</td>
+								<td>constructs a stream made up of consecutive numbers in the range [low high].</td>
+							</tr>
+							<tr>
+								<td>from(start)</td>
+								<td>Constructs an infinite stream of consecutive numbers starting from integer <i>start</i>.</td>
+							</tr>
+							<tr>
+								<td>upTo(stop)</td>
+								<td>Constructs a stream made up of consecutive numbers up to <i>stop</i>.</td>
+							</tr>
+							<tr>
+								<td>Ones()</td>
+								<td>Returns an infinite stream of ones.</td>
+							</tr>
+							<tr>
+								<td>NaturalNumbers()</td>
+								<td>Returns the stream of Natural numbers.</td>
 							</tr>
 						</tbody>
 					</table>
-				</div><!-- .table-wrap -->
-			</div><!-- .options -->
-			
-		</div><!-- .page -->
-		
+				</div>
+				<!-- .table-wrap -->
+			</div>
+			<!-- .options -->
+
+		</div>
+		<!-- .page -->
+
 		<footer class="footer">
-			<p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">{{project-name}}</span> is built and maintained by <a xmlns:cc="http://creativecommons.org/ns#" href="{{author-url}}" property="cc:attributionName" rel="cc:attributionURL">{{author-name}}</a> and is licensed under a <a rel="license" href="#">{{license-name}}</a>. Follow me on <a href="#">Twitter</a>, <a href="#">GitHub</a> and <a href="#">Dribbble</a>.</p>
-			<p><a rel="license" href="http://creativecommons.org/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a></p>
+			<p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title"
+				rel="dct:type">{{project-name}}</span> is built and maintained by <a xmlns:cc="http://creativecommons.org/ns#" href="{{author-url}}"
+				property="cc:attributionName" rel="cc:attributionURL">{{author-name}}</a> and is licensed under a <a rel="license" href="#">{{license-name}}</a>.
+				Follow me on <a href="#">Twitter</a>, <a href="#">GitHub</a> and <a href="#">Dribbble</a>.</p>
+			<p>
+				<a rel="license" href="http://creativecommons.org/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"
+					/></a>
+			</p>
 		</footer>
-		
-	</div><!-- .wrapper -->
 
-<!-- jQuery -->
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="bd.jquery.min.js"%3E%3C/script%3E'))</script>
+	</div>
+	<!-- .wrapper -->
 
-<!-- JavaScript -->
-<script src="bd.ui.js"></script>
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script>
+		!window.jQuery && document.write(unescape('%3Cscript src="bd.jquery.min.js"%3E%3C/script%3E'))
+	</script>
+
+	<!-- JavaScript -->
+	<script src="bd.ui.js"></script>
 
 </body>
+
 </html>
