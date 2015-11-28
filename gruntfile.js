@@ -6,8 +6,6 @@ module.exports = function (grunt) {
         asciify: {
             banner: {
                 text: 'streamJS',
-
-                // Add the awesome to the console, and use the best font.
                 options: {
                     font: 'ogre',
                     log: true
@@ -31,14 +29,13 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */' + 
-                '/*!\n <%= asciify_banner %> \n*/\n',
+                '<%= grunt.template.today("yyyy-mm-dd") %> ' +
+                '!\n<%= asciify_banner %> \n*/ \n',
                 mangle: true,
                 compress: true,
                 report: 'min',
                 preserveComments: false,
                 mangleProperties: false,
-
             },
             target: {
                 files: {
