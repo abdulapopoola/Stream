@@ -12,13 +12,34 @@
 	<title>StreamJS - JavaScript library for using Streams</title>
 	<link rel="stylesheet" href="bd.styles.css">
 	<script src="stream.min.js" type="text/javascript"></script>
+	<script>
+		window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1683872925159402',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "http://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+	</script>
 </head>
 
 <body>
 
+
 	<div class="wrapper">
 		<div class="page">
 
+			<script>
+				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			</script>
 			<nav class="nav">
 				<ul>
 					<li><a href="http://abdulapopoola.com">Author</a></li>
@@ -33,6 +54,13 @@
 				<h1>StreamJS <span class="version">v1.0</span></h1>
 				<p>StreamJS is small library that provides the power of streams for your computational needs.</p>
 				<div class="custom-nav"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" {count} data-via="abdulapopoola" data-size="large" data-hashtags="streamJS">Tweet</a>
+				<div class="fb-share-button" data-href="http://abdulapopoola.github.io/Stream/" data-layout="button_count"></div>
+
+				<iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star" frameborder="0" scrolling="0"
+				width="170px" height="20px"></iframe>
+				<iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=watchv&=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+				<iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=fork" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 			</header>
 
 			<div class="sep">
@@ -89,7 +117,7 @@ var streamFromArray = Stream.fromArray([1,2,3]);</pre>
 				<div class="description">
 					<h2>Using Streams</h2>
 				</div>
-				
+
 				<nav class="subnav tabs">
 					<ul>
 						<li class="active"><a href="#panel-1">Finite streams</a></li>
@@ -105,7 +133,7 @@ console.log(sum);
 //6</pre>
 					</div>
 					<!-- .panel -->
-					
+
 				</div>
 				<!-- .panels -->
 			</div>
@@ -134,8 +162,8 @@ var oddNaturals = NaturalNumbers.filter(function(val) {
 				<!-- .panels -->
 			</div>
 			<!-- .demo -->
-			
-			<div class="demo" id="demo-one">				
+
+			<div class="demo" id="demo-one">
 				<nav class="subnav tabs">
 					<ul>
 						<li class="active"><a href="#panel-1">Stream operations</a></li>
@@ -149,19 +177,19 @@ console.log(sum);
 //10100</pre>
 					</div>
 					<!-- .panel -->
-					
+
 				</div>
 				<!-- .panels -->
 			</div>
 			<!-- .demo -->
 
 			<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
-				<div class="description">
-					<h2>More examples</h2>
-					<p>1. A detailed blog post with more examples is available <a href="">here</a>.</p>
-					<p>2. Open your console and play with it!</p>
-				</div>
-				
+			<div class="description">
+				<h2>More examples</h2>
+				<p>1. A detailed blog post with more examples is available <a href="">here</a>.</p>
+				<p>2. Open your console and play with it!</p>
+			</div>
+
 			<div class="options">
 				<div class="description">
 					<h2>Methods</h2>
@@ -295,9 +323,13 @@ console.log(sum);
 				<!-- .table-wrap -->
 			</div>
 			<!-- .options -->
-
+			<a href="https://twitter.com/abdulapopoola" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @abdulapopoola</a>
+			<script>
+				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			</script>
 		</div>
 		<!-- .page -->
+
 
 		<footer class="footer">
 			<p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title"
@@ -322,6 +354,7 @@ console.log(sum);
 	<!-- JavaScript -->
 	<script src="bd.ui.js"></script>
 
+	<a href="https://twitter.com/abdulapopoola" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @abdulapopoola</a>
 </body>
 
 </html>
