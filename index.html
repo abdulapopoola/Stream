@@ -121,7 +121,7 @@ console.log(sum);
 				</nav>
 				<div class="panels">
 					<div class="panel" id="panel-1">
-						<pre>var evenNaturals = NaturalNumbers.filter(function(val) {
+						<pre>var evenNaturals = NaturalNumbers().filter(function(val) {
     return val % 2 === 0;
 });
  
@@ -143,9 +143,10 @@ var oddNaturals = NaturalNumbers.filter(function(val) {
 				</nav>
 				<div class="panels">
 					<div class="panel" id="panel-1">
-						<pre>var first100EvenNums = evenNatuarals.pick(100);
+						<pre>var first100EvenNums = evenNaturals.pick(100);
 var sum = first100EvenNums.sum();
-//</pre>
+console.log(sum);
+//10100</pre>
 					</div>
 					<!-- .panel -->
 					
