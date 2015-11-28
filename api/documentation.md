@@ -44,8 +44,8 @@
 <dt><a href="#filter">filter(fn)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Filters a stream.</p>
 </dd>
-<dt><a href="#contains">contains(index)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if the stream contains an element. Only defined for a finite stream</p>
+<dt><a href="#contains">contains(element)</a> ⇒ <code>Boolean</code></dt>
+<dd><p>Check if the stream contains <code>element</code>. Only defined for a finite stream</p>
 </dd>
 <dt><a href="#walk">walk(fn)</a></dt>
 <dd><p>Walks a stream and applies the input function to the stream. 
@@ -59,9 +59,8 @@
 <dd><p>Removes the first <code>n</code> elements of a stream. Returns an empty stream
   if <code>n</code> is greater than the stream&#39;s length.</p>
 </dd>
-<dt><a href="#toArray">toArray()</a></dt>
+<dt><a href="#toArray">toArray()</a> ⇒ <code>Array</code></dt>
 <dd><p>Constructs an array containing the elements of a finite stream</p>
-<p> returns {Array} A array containing the elements of the stream</p>
 </dd>
 <dt><a href="#add">add(s1, s2)</a> ⇒ <code><a href="#Stream">Stream</a></code></dt>
 <dd><p>Adds two streams</p>
@@ -263,15 +262,15 @@ var evenNumbers = Stream.filter(function(val) {
   });
 ```
 <a name="contains"></a>
-## contains(index) ⇒ <code>Boolean</code>
-Check if the stream contains an element. Only defined for a finite stream
+## contains(element) ⇒ <code>Boolean</code>
+Check if the stream contains `element`. Only defined for a finite stream
 
 **Kind**: global function  
 **Returns**: <code>Boolean</code> - Returns `true` if the stream contains the element  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| index | <code>\*</code> | The index of the stream element to be picked |
+| element | <code>\*</code> | The element to be searched for |
 
 **Example**  
 ```js
@@ -329,12 +328,11 @@ integerStream.remove(3);
   // => [4,5,6]
 ```
 <a name="toArray"></a>
-## toArray()
+## toArray() ⇒ <code>Array</code>
 Constructs an array containing the elements of a finite stream
- 
- returns {Array} A array containing the elements of the stream
 
 **Kind**: global function  
+**Returns**: <code>Array</code> - A array containing the elements of the stream  
 <a name="add"></a>
 ## add(s1, s2) ⇒ <code>[Stream](#Stream)</code>
 Adds two streams
