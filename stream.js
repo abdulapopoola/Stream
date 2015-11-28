@@ -384,11 +384,19 @@ function toArray() {
 *   Stream.add(s1 s2);
 **/
 function add(s1, s2) {
+	if(s1.isEmpty()) {
+		return s2;	
+	}
+
+	if(s2.isEmpty()) {
+		return s1;	
+	}
+
     return new Stream(
- 	s1.head() + s2.head(),
-	function () {
-		return Stream.add(s1.tail(), s2.tail());
-	});
+ 		s1.head() + s2.head(),
+		function () {
+			return Stream.add(s1.tail(), s2.tail());
+		});
 }
 
 /**
