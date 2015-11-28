@@ -384,13 +384,11 @@ function toArray() {
 *   Stream.add(s1 s2);
 **/
 function add(s1, s2) {
-    var zipped = Stream.zip(s1, s2);
-
-    return zipped.map(function (zippedElement) {
-        return zippedElement.reduce(function (a, b) {
-            return a + b;
-        });
-    });
+    return new Stream(
+ 	s1.head() + s2.head(),
+	function () {
+		return Stream.add(s1.tail(), s2.tail());
+	});
 }
 
 /**
