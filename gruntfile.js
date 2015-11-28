@@ -3,6 +3,17 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        asciify: {
+            banner: {
+                text: 'streamJS',
+
+                // Add the awesome to the console, and use the best font.
+                options: {
+                    font: 'ogre',
+                    log: true
+                }
+            }
+        },
         jsdoc2md: {
             oneOutputFile: {
                 src: 'stream.js',
@@ -20,7 +31,8 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */',
+                '<%= grunt.template.today("yyyy-mm-dd") %> */' + 
+                '/*!\n <%= asciify_banner %> \n*/\n',
                 mangle: true,
                 compress: true,
                 report: 'min',
@@ -36,7 +48,7 @@ module.exports = function (grunt) {
         },
         jshint: {
             options: {
-                unused:true,
+                unused: true,
                 undef: true,
                 nonew: true,
                 nonbsp: true,
@@ -54,10 +66,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mocha-phantomjs');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-asciify');
 
     grunt.registerTask('test', 'mocha_phantomjs');
     grunt.registerTask('doc', 'jsdoc2md');
     grunt.registerTask('min', 'uglify');
     grunt.registerTask('lint', 'jshint');
-    grunt.registerTask('default', ['test', 'lint', 'min', 'doc'])
+    grunt.registerTask('default', ['test', 'lint', 'asciify', 'min', 'doc'])
 };
