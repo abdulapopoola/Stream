@@ -32,7 +32,7 @@
 	
 	<style>
 		div.fb-share-button.fb_iframe_widget > span {
-			vertical-align: inherit;
+			vertical-align: inherit !important;
 		}
 	</style>
 </head>
@@ -87,6 +87,61 @@
 				<span class="left-arrow arrow"></span>
 				<span class="right-arrow arrow"></span>
 			</div>
+			
+			<div class="demo" id="demo-one">
+				<div class="description">
+					<h2>Getting Started</h2>
+					<p>Get the latest <a href="https://github.com/abdulapopoola/Stream/releases">release</a> from Github or via npm/bower.</p>
+				</div>
+				<!-- .description -->
+
+				<nav class="subnav tabs">
+					<ul>
+						<li class="active"><a href="#panel-1">npm</a></li>
+					</ul>
+				</nav>
+				<div class="panels">
+					<div class="panel" id="panel-1">
+						<pre>npm install stream-js</pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
+			
+			<div class="demo" id="demo-one">
+				<nav class="subnav tabs">
+					<ul>
+						<li class="active"><a href="#panel-1">bower</a></li>
+					</ul>
+				</nav>
+				<div class="panels">
+					<div class="panel" id="panel-1">
+						<pre>bower install stream-js</pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
+			
+			<div class="demo" id="demo-one">
+				<nav class="subnav tabs">
+					<ul>
+						<li class="active"><a href="#panel-1">Direct download</a></li>
+					</ul>
+				</nav>
+				<div class="panels">
+					<div class="panel" id="panel-1">
+						<pre><a href="stream.min.js" download>Minified version</a></pre>
+						<pre><a href="stream.js" download>Development version</a></pre>
+					</div>
+					<!-- .panel -->
+				</div>
+				<!-- .panels -->
+			</div>
+			<!-- .demo -->
 
 			<div class="demo" id="demo-one">
 				<div class="description">
@@ -328,7 +383,6 @@ console.log(sum);
 				<!-- .table-wrap -->
 			</div>
 			<!-- .options -->
-			<a href="https://twitter.com/abdulapopoola" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @abdulapopoola</a>
 			<script>
 				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 			</script>
@@ -338,10 +392,12 @@ console.log(sum);
 
 		<footer class="footer">
 			<p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title"
-				rel="dct:type">{{project-name}}</span> is built and maintained by <a xmlns:cc="http://creativecommons.org/ns#" href="{{author-url}}"
-				property="cc:attributionName" rel="cc:attributionURL">{{author-name}}</a> and is licensed under a <a rel="license" href="#">{{license-name}}</a>.
-				Follow me on <a href="#">Twitter</a>, <a href="#">GitHub</a> and <a href="#">Dribbble</a>.</p>
+				rel="dct:type">stream-js</span> is built and maintained by <a xmlns:cc="http://creativecommons.org/ns#" href="{{author-url}}"
+				property="cc:attributionName" rel="cc:attributionURL">abdulapopoola</a> and is licensed under a <a rel="license" href="#">MIT</a> license.
 			<p>
+				<div>
+					<a href="https://twitter.com/abdulapopoola" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @abdulapopoola</a>
+					</div>
 				<a rel="license" href="http://creativecommons.org/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"
 					/></a>
 			</p>
@@ -359,7 +415,6 @@ console.log(sum);
 	<!-- JavaScript -->
 	<script src="bd.ui.js"></script>
 
-	<a href="https://twitter.com/abdulapopoola" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @abdulapopoola</a>
 </body>
 
 </html>
