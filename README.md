@@ -11,7 +11,7 @@ NaturalNumbers()
   .pick(100)
   .sum();
 ```
-Beautiful succinct right?
+Beautifully succinct right?
 
 # Getting started
 
