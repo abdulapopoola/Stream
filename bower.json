@@ -2,7 +2,7 @@
   "name": "stream",
   "dependencies": {
     "chai": "~3.4.1",
-    "mocha": "~1.14.0"
+    "mocha": "~2.3.3"
   },
   "devDependencies": {},
   "main": "stream.js",
