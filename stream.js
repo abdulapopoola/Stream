@@ -2,7 +2,7 @@
 	
 	
   // UMD (Universal Modules Definition)
-  if(module !== undefined && module.exports !== void 0){
+  if(typeof module != "undefined" && module.exports !== void 0){
        module.exports = factory();
   }else if(define !== undefined && (!!define.amd)){
        define("Stream", factory);
