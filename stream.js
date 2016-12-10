@@ -579,6 +579,9 @@ function NaturalNumbers() {
                 Stream.Ones());
         });
 }
+	
+// Set constructor
+Stream.prototype.constructor = Stream;
 
 //Instance methods
 Stream.prototype.head = head;
