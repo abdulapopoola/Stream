@@ -1,3 +1,17 @@
+;(function(root, factory, undefined){
+	
+	
+  // UMD (Universal Modules Definition)
+  if(module !== undefined && module.exports !=== void 0){
+       module.exports = factory();
+  }else if(define !== undefined && (!!define.amd)){
+       define("Stream", factory);
+  }else if(root !== undefined && (root.window === root)){
+       root.Stream = factory(root); 
+  }
+	
+}(this, function(w){	
+
 function fail(errMessage) {
     throw new Error(errMessage);
 }
@@ -595,3 +609,6 @@ Stream.from = from;
 Stream.upTo = upTo;
 Stream.Ones = Ones;
 Stream.NaturalNumbers = NaturalNumbers;
+
+return Stream;
+}));
