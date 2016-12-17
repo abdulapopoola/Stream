@@ -1,3 +1,5 @@
+'use strict';
+
 function fail(errMessage) {
     throw new Error(errMessage);
 }
@@ -566,9 +568,6 @@ function NaturalNumbers() {
         });
 }
 	
-// Set constructor
-Stream.prototype.constructor = Stream;
-
 //Instance methods
 Stream.prototype.head = head;
 Stream.prototype.tail = tail;
@@ -598,3 +597,7 @@ Stream.from = from;
 Stream.upTo = upTo;
 Stream.Ones = Ones;
 Stream.NaturalNumbers = NaturalNumbers;
+
+module.exports = {
+    Stream: Stream
+};

@@ -17,15 +17,11 @@ Beautifully succinct right?
 
 Stream-js is a very small (**4.1kb minified**) library that brings the power of streams to your programming. It enables you to write code as shown above.
 
-Get the [latest release](https://github.com/abdulapopoola/Stream/releases) from GitHub, via NPM or bower.
+Get the [latest release](https://github.com/abdulapopoola/Stream/releases) from GitHub or via NPM.
 
 **NPM**
 ```bash
 npm install stream-js
-```
-**Bower**
-```bash
-bower install stream-js
 ```
 
 # Creating Streams
