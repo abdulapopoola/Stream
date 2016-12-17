@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
         frameworks: ['browserify', 'jasmine'],
         files: [
@@ -14,6 +14,14 @@ module.exports = function(config) {
             debug: true,
             verbose: true
         },
-        port: 9870
+        port: 9870,
+        reporters: ['spec', 'html'],
+        htmlReporter: {
+            outputFile: 'tests/tests.html',
+            pageTitle: 'Stream Unit Tests',
+            subPageTitle: 'Stream tests',
+            groupSuites: true,
+            useCompactStyle: true
+        }
     });
 };
