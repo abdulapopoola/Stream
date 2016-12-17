@@ -17,7 +17,7 @@
     "grunt-mocha-phantomjs": "^4.0.0"
   },
   "description": "Implementation of the functional programming streams concept in JS.",
-  "main": "gruntfile.js",
+  "main": "stream.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abdulapopoola/Stream.git"
