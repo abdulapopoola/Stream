@@ -1,16 +1,5 @@
-;(function(root, factory, undefined){
-	
-	
-  // UMD (Universal Modules Definition)
-  if(typeof module != "undefined" && module.exports !== void 0){
-       module.exports = factory();
-  }else if(define !== undefined && (!!define.amd)){
-       define("Stream", factory);
-  }else if(root !== undefined && (root.window === root)){
-       root.Stream = factory(root); 
-  }
-	
-}(this, function(w){	
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
 
 function fail(errMessage) {
     throw new Error(errMessage);
@@ -580,9 +569,6 @@ function NaturalNumbers() {
         });
 }
 	
-// Set constructor
-Stream.prototype.constructor = Stream;
-
 //Instance methods
 Stream.prototype.head = head;
 Stream.prototype.tail = tail;
@@ -613,5 +599,5 @@ Stream.upTo = upTo;
 Stream.Ones = Ones;
 Stream.NaturalNumbers = NaturalNumbers;
 
-return Stream;
-}));
+module.exports = Stream;
+},{}]},{},[1]);

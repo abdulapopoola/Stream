@@ -1,5 +1,5 @@
-bower_components
 node_modules
-.bowerrc
 *.log
 *.*~
+coverage
+tests.html
