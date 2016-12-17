@@ -5,8 +5,8 @@
   "scripts": {
     "docs": "jsdoc2md src/*.js > docs/api.md",
     "lint": "jshint src tests",
-    "test": "karma start",
-    "testCI": "karma start --single-run",
+    "test-dev": "karma start",
+    "test": "karma start --single-run",
     "build": "browserify src/stream.js > dist/stream.js",
     "build:min": "browserify src/stream.js | uglifyjs -mc > dist/stream.min.js"
   },
