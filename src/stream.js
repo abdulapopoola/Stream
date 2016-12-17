@@ -46,7 +46,7 @@ Stream.prototype.tail = function () {
 };
 
 /**
- *   Checks if a Stream is empty   
+ *   Checks if a Stream is empty
  *
  *   @returns {boolean} Returns `true` if the stream is empty
  *   @example
@@ -59,7 +59,7 @@ Stream.prototype.isEmpty = function () {
 };
 
 /**
- *   Checks if the tail of a Stream is empty   
+ *   Checks if the tail of a Stream is empty
  *
  *   @returns {boolean} Returns `true` if the tail is empty
  *   @example
@@ -84,9 +84,10 @@ Stream.prototype.hasEmptyTail = function () {
 
 /**
  *  Appends a new stream to the end of this stream
- * 
+ *  
  *  @param {Stream} s - The stream to append to the end of this stream
  *  @returns {Stream} A new stream with s appended to the current stream
+ * 
  */
 Stream.prototype.append = function (s) {
     if (this.isEmpty()) {
@@ -125,7 +126,7 @@ Stream.prototype.pick = function (n) {
 };
 
 /**
- *   Returns the element at the nth index in a stream. Returns `undefined` 
+ *   Returns the element at the nth index in a stream. Returns `undefined`
  *   if stream size is less than the index. Indexing is zero-based.
  *
  *   @param {Number} index - The zero-based index of the stream element to be picked
@@ -177,7 +178,7 @@ Stream.prototype.length = function () {
  *   Reduces the stream to an accumulated value obtained over
  *   each stream element. Only valid for finite streams.
  *
- *   @param {Function} fn - Function to execute on each argument, 
+ *   @param {Function} fn - Function to execute on each argument,
  *   taking the accumlatedValue so far and the current stream value
  *   @param {*} initialValue - The initialValue to seed the accumulator with
  *   @returns {*} The accumulated output
@@ -217,7 +218,7 @@ Stream.prototype.sum = function () {
 };
 
 /**
- *   Maps a function over all the elements of a stream.   
+ *   Maps a function over all the elements of a stream.
  *
  *   @static
  *   @param {Stream} stream - Stream to map function to
@@ -241,14 +242,14 @@ Stream.prototype.map = function (fn) {
 };
 
 /**
- *   Filters a stream. 
+ *   Filters a stream.
  *
  *   @param {Function} fn - Filter function
  *   @returns {Stream} Filtered stream
  *   @example
  *
  *   var evenNumbers = Stream.filter(function(val) {
- *       return val % 2 === 0;  
+ *       return val % 2 === 0;
  *   });
  **/
 Stream.prototype.filter = function (fn) {
@@ -268,7 +269,7 @@ Stream.prototype.filter = function (fn) {
 };
 
 /**
- *   Check if the stream contains `element`. Only defined for a finite stream   
+ *   Check if the stream contains `element`. Only defined for a finite stream
  *
  *   @param {*} element - The element to be searched for
  *   @returns {Boolean} Returns `true` if the stream contains the element
@@ -290,7 +291,7 @@ Stream.prototype.contains = function (element) {
 };
 
 /**
- *   Walks a stream and applies the input function to the stream. 
+ *   Walks a stream and applies the input function to the stream.
  *   Stream has to be finite for this to work.
  *
  *   @param {Function} fn - The function to apply to every element of the stream
@@ -313,8 +314,7 @@ Stream.prototype.walk = function (fn) {
 };
 
 /**
- *   Prints out the first `n` elements of a stream, will stop if stream length is less
- *   than `n` 
+ *   Prints out the first `n` elements of a stream, will stop if stream length is less than `n`
  *
  *   @param {Number} n - Number of elements to print
  *   @example
@@ -360,9 +360,9 @@ Stream.prototype.remove = function (n) {
 
 /**
  *  Constructs an array containing the elements of a finite stream
- *  
+ *
  *  @returns {Array} A array containing the elements of the stream
- */
+ **/
 Stream.prototype.toArray = function () {
     var items = [];
 
@@ -375,7 +375,7 @@ Stream.prototype.toArray = function () {
 };
 
 /**
- *   Adds two streams   
+ *   Adds two streams
  *
  *   @static
  *   @param {Stream} s1 - Augend stream
@@ -414,7 +414,7 @@ Stream.add = function (s1, s2) {
  *
  *   var zipped = Stream.zip(s1, s2, s3);
  **/
-Stream.zip = function ( /* arguments */ ) {
+Stream.zip = function (/* arguments */) {
     var args = [].slice.call(arguments);
 
     var zippedFirsts = [];
@@ -451,7 +451,7 @@ Stream.zip = function ( /* arguments */ ) {
  *
  *   var s = Stream.create(1,2,3,4);
  **/
-Stream.create = function ( /* arguments */ ) {
+Stream.create = function (/* arguments */) {
     if (arguments.length === 0) {
         return new Stream(null, null);
     }
@@ -481,13 +481,13 @@ Stream.fromArray = function (values) {
 /**
  *  Constructs a stream made up of consecutive numbers in the
  *  range [low high]
- *  
+ *
  *  @static
- *  @param {*} low=0 - The lower limit value of the stream
+ *  @param {*} low = 0 - The lower limit value of the stream
  *  @param {*} high - The upper limit value of the stream
- *  
+ *
  *  returns {Stream} A finite stream with elements in the range [low, high]
- */
+ **/
 Stream.fromInterval = function (low, high) {
     if (!low) {
         low = 0;
@@ -504,14 +504,14 @@ Stream.fromInterval = function (low, high) {
 };
 
 /**
- *  Constructs an infinite stream of consecutive numbers starting 
+ *  Constructs an infinite stream of consecutive numbers startin
  *  from integer `start`
- *  
+ *
  *  @static
- *  @param {Number} start=0 - The integer to start the stream from
- *  
+ *  @param {Number} start = 0 - The integer to start the stream from
+ *
  *  returns {Stream} A infinite stream with elements starting from `start`
- */
+ **/
 Stream.from = function (start) {
     if (!start) {
         start = 0;
@@ -526,18 +526,18 @@ Stream.from = function (start) {
 
 /**
  *  Constructs a stream made up of consecutive numbers up to `stop`
- *  
+ *
  *  @static
  *  @param {Number} stop - The maximum and last value of the stream
- *  
+ *
  *  returns {Stream} A finite stream with elements in the range [0, stop]
- */
+ **/
 Stream.upTo = function (stop) {
     return Stream.fromInterval(0, stop);
 };
 
 /**
- *   Returns an infinite stream of ones   
+ *   Returns an infinite stream of ones
  *
  *   @static
  *   @returns {Stream} An infinite stream of Ones
@@ -550,7 +550,7 @@ Stream.Ones = function () {
 };
 
 /**
- *   Returns the stream of Natural numbers  
+ *   Returns the stream of Natural numbers
  *
  *   @static
  *   @returns {Stream} The infinite stream of natural numbers
@@ -558,7 +558,7 @@ Stream.Ones = function () {
  *
  *   var naturals = Stream.NaturalNumbers();
  **/
-Stream.NaturalNumbers = function() {
+Stream.NaturalNumbers = function () {
     return new Stream(
         1,
         function () {
