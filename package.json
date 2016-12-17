@@ -2,9 +2,6 @@
   "name": "stream-js",
   "private": false,
   "version": "0.5.1",
-  "dependencies": {
-    "chai": "~3.5.0"
-  },
   "scripts": {
     "docs": "jsdoc2md src/*.js > docs/api.md",
     "lint": "jshint src tests",
