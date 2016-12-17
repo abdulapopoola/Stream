@@ -41,6 +41,12 @@ describe('Stream', function () {
         }).toThrowError(Error, 'Stream is empty!');
     });
 
+    it('elementAt returns undefined if index is null or too high', function () {
+        var stream = Stream.create(1, 2, 3);
+        expect(stream.elementAt()).toBeUndefined();
+        expect(stream.elementAt(1000)).toBeUndefined();
+    });
+
     it('can create Streams by passing in values', function () {
         var stream = Stream.create(1, 2, 3);
 
@@ -192,6 +198,13 @@ describe('Stream', function () {
         var s1 = Stream.fromArray([1, 3, 5]);
         var sum = s1.sum();
         expect(sum).toBe(9);
+    });
+
+    it('requires mapping function to be defined', function () {
+        var s1 = Stream.fromArray([1, 3, 5]);
+        expect(function () {
+            s1.map();
+        }).toThrowError(Error, 'Mapping function has to be defined');
     });
 
     it('can map over elements of a stream', function () {
