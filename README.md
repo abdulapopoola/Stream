@@ -1,5 +1,7 @@
 # Stream-js
 
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b74593bdcd5e4d47a823f4ffec799689)](https://www.codacy.com/app/abdulapopoola/Stream?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=abdulapopoola/Stream&amp;utm_campaign=badger)
 [![Build Status](https://travis-ci.org/abdulapopoola/Stream.svg?branch=master)](https://travis-ci.org/abdulapopoola/Stream) [![Dependencies](https://david-dm.org/abdulapopoola/Stream.svg)](https://david-dm.org/abdulapopoola/Stream.svg) [![devDependency Status](https://david-dm.org/abdulapopoola/Stream/dev-status.svg)](https://david-dm.org/abdulapopoola/Stream#info=devDependencies) 
 ========================
 
