@@ -1,4 +1,5 @@
 'use strict';
+
 var Stream = require('../src/stream').Stream;
 
 describe('Stream', function () {
@@ -99,7 +100,8 @@ describe('Stream', function () {
         expect(stream.isEmpty()).toBe(false);
 
         expect(stream.head()).toBe(0);
-        expect(stream.length()).toBe(101); //zero-based index 
+        // zero-based index
+        expect(stream.length()).toBe(101);
 
         //Verify elements
         expect(stream.elementAt(0)).toBe(0);
